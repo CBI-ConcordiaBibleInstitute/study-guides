@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (siteContent) {
       siteContent.removeAttribute('aria-hidden');
     }
-  }, 2000);
+  }, 1500);
 });
 
 const guideGrid = document.getElementById('guideGrid');
