@@ -1,3 +1,21 @@
+const pageLoader = document.getElementById('pageLoader');
+const siteContent = document.getElementById('siteContent');
+
+window.addEventListener('DOMContentLoaded', () => {
+  window.setTimeout(() => {
+    document.body.classList.remove('is-loading');
+    document.body.classList.add('is-ready');
+
+    if (pageLoader) {
+      pageLoader.setAttribute('aria-hidden', 'true');
+    }
+
+    if (siteContent) {
+      siteContent.removeAttribute('aria-hidden');
+    }
+  }, 4000);
+});
+
 const guideGrid = document.getElementById('guideGrid');
 const cards = [...document.querySelectorAll('.guide-card')];
 const filterButtons = [...document.querySelectorAll('.filter-btn')];

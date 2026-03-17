@@ -10,7 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="is-loading">
+  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading website">
+    <div class="loader-mark" aria-hidden="true">
+      <span class="loader-ring loader-ring--outer"></span>
+      <span class="loader-ring loader-ring--inner"></span>
+      <span class="loader-core"></span>
+    </div>
+    <p class="loader-text">Loading Concordia Study Library...</p>
+  </div>
+
+  <div id="siteContent" aria-hidden="true">
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
@@ -187,6 +197,8 @@
     </div>
     <p class="copyright">© <span id="year"></span> Concordia Bible Institute. All rights reserved.</p>
   </footer>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
