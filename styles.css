@@ -46,8 +46,7 @@ body {
 }
 
 .site-header.scrolled {
-  background: rgba(86, 12, 29, 0.96);
-  backdrop-filter: blur(8px);
+  background: var(--header-footer);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
@@ -73,15 +72,16 @@ body {
 
 .header-logo {
   width: 52px;
-  height: 56px;
-  border-radius: 6px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
-  animation: logo-float 3.2s ease-in-out infinite;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-brand:hover .header-logo,
 .header-brand:focus-visible .header-logo {
+  animation: logo-float 0.9s ease-in-out;
   transform: translateY(-1px) scale(1.05);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 12px 24px rgba(0, 0, 0, 0.35);
 }
@@ -106,19 +106,42 @@ body {
 }
 
 .nav-links a {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   color: #f9d9df;
   font-weight: 600;
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  transition: color 0.25s ease, transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: #fff;
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.nav-links a:hover::before,
+.nav-links a:focus-visible::before {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 
@@ -333,7 +356,7 @@ h1 { font-size: clamp(2.2rem, 4.8vw, 4.1rem); line-height: 1.1; margin: 0; lette
 
   .header-logo {
     width: 44px;
-    height: 48px;
+    height: 44px;
   }
 }
 
