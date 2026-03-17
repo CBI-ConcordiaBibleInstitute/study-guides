@@ -72,18 +72,22 @@ body {
 }
 
 .header-logo {
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-  display: inline-grid;
-  place-items: center;
-  font-size: 0.64rem;
+  width: 52px;
+  height: 56px;
+  border-radius: 6px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  animation: logo-float 3.2s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-brand:hover .header-logo,
+.header-brand:focus-visible .header-logo {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.brand-text {
   font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: radial-gradient(circle at 30% 30%, #8c2940, #6b1025 70%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .nav-links {
@@ -189,6 +193,11 @@ h1 { font-size: clamp(2.2rem, 4.8vw, 4.1rem); line-height: 1.1; margin: 0; lette
   border-radius: 999px;
   transform: translateX(-50%);
   animation: scroll-bounce 1.6s infinite;
+}
+
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 @keyframes scroll-bounce {
@@ -318,13 +327,13 @@ h1 { font-size: clamp(2.2rem, 4.8vw, 4.1rem); line-height: 1.1; margin: 0; lette
 
 
 @media (max-width: 700px) {
-  .header-brand span {
+  .brand-text {
     font-size: 0.95rem;
   }
 
   .header-logo {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 48px;
   }
 }
 
