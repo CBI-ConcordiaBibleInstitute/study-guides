@@ -1,0 +1,26 @@
+<svg width="180" height="194" viewBox="0 0 180 194" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Concordia Bible Institute logo</title>
+  <desc id="desc">Concordia Bible Institute crest with circular seal and tagline Christ in Every Word.</desc>
+
+  <rect width="180" height="194" fill="#7B1730"/>
+
+  <circle cx="90" cy="81" r="61" fill="#F5EDEF"/>
+  <circle cx="90" cy="81" r="46" fill="#8B1F3B"/>
+
+  <path d="M66 111 L60 94 L71 80 L69 65 L83 60 L90 48 L104 51 L111 66 L122 75 L121 95 L109 108 Z" fill="#FFF7F8"/>
+  <path d="M89 42 L96 34 L105 34 L98 42 L98 97 L89 103 Z" fill="#FFF7F8" stroke="#7B1730" stroke-width="1.6"/>
+  <path d="M76 52 L89 42 L89 52 L76 62 L62 62 L66 52 Z" fill="#FFF7F8" stroke="#7B1730" stroke-width="1.6"/>
+  <path d="M98 44 L112 44 L119 52 L114 62 L98 62 Z" fill="#FFF7F8" stroke="#7B1730" stroke-width="1.6"/>
+
+  <path id="topArc" d="M36 54 A56 56 0 0 1 144 54" fill="none"/>
+  <path id="bottomArc" d="M36 108 A56 56 0 0 0 144 108" fill="none"/>
+
+  <text font-family="Georgia, serif" font-size="9.8" fill="#7B1730" letter-spacing="0.6">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">CONCORDIA BIBLE INSTITUTE</textPath>
+  </text>
+  <text font-family="Georgia, serif" font-size="8.4" fill="#7B1730" letter-spacing="0.45">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">CONCORDIA UNIVERSITY WISCONSIN</textPath>
+  </text>
+
+  <text x="90" y="170" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="12" fill="#F3DADF">“Christ In Every Word”</text>
+</svg>
