@@ -73,15 +73,16 @@ body {
 
 .header-logo {
   width: 52px;
-  height: 56px;
-  border-radius: 6px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
-  animation: logo-float 3.2s ease-in-out infinite;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-brand:hover .header-logo,
 .header-brand:focus-visible .header-logo {
+  animation: logo-float 0.9s ease-in-out;
   transform: translateY(-1px) scale(1.05);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 12px 24px rgba(0, 0, 0, 0.35);
 }
