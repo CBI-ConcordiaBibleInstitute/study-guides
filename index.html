@@ -46,7 +46,7 @@
         <div class="container hero-content fade-up">
           <p class="eyebrow">Concordia Bible Institute</p>
           <h1>Concordia Bible Institute STUDY GUIDES</h1>
-          <p class="subtitle">Browse featured study guides first, then use the More button to open the full episode library with study guides, podcast audio, and YouTube video resources for each series.</p>
+          <p class="subtitle">Browse clean study guide cards first, then click any series to open a modern detail view with episode-by-episode study guides, podcast audio, and YouTube resources.</p>
           <a class="cta-button" href="#study-guides">Browse Guides</a>
         </div>
         <a class="scroll-indicator" href="#study-guides" aria-label="Scroll to study guides">
@@ -58,8 +58,8 @@
         <div class="container">
           <div class="section-heading fade-up">
             <p class="eyebrow">Library</p>
-            <h2>Start with featured study guides, then load the full episode collection</h2>
-            <p>The homepage now opens with a smaller featured selection. Each study guide expands into episode resources with separate study guide, podcast audio, and YouTube video groupings.</p>
+            <h2>Clean study guide cards on the homepage</h2>
+            <p>The main page now stays focused on the essentials: title, short description, and episode count. Click any card to open a modern detail view with the full episode resources.</p>
           </div>
 
           <div class="controls fade-up">
@@ -82,12 +82,20 @@
             <div>
               <p class="summary-label">Featured now</p>
               <h3 id="guideSummaryHeading">Showing featured study guides</h3>
-              <p id="guideSummaryText">Open More to reveal the entire study guide archive and all episode breakdowns.</p>
+              <p id="guideSummaryText">Click any card to open the full study guide details in a modern overlay.</p>
             </div>
             <button class="more-button" id="moreGuidesButton" type="button" aria-expanded="false">More Study Guides</button>
           </div>
 
           <div class="guide-grid" id="guideGrid" aria-live="polite"></div>
+
+          <div class="guide-modal" id="guideModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+            <div class="guide-modal__backdrop"></div>
+            <div class="guide-modal__panel">
+              <button class="guide-modal__close" id="guideModalClose" type="button" aria-label="Close guide details">×</button>
+              <div class="guide-modal__content" id="guideModalContent"></div>
+            </div>
+          </div>
         </div>
       </section>
 
