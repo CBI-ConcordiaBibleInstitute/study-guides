@@ -1,11 +1,9 @@
 from pathlib import Path
 
+from guide_library_data import FEATURED_GUIDE_SLUGS, GUIDE_LIBRARY
+
 ROOT = Path(__file__).resolve().parent
-GUIDES = [
-    'revelation', 'genesis', 'numbers', 'exodus', 'leviticus', 'psalms', 'ecclesiastes', 'song-of-songs',
-    'hosea', 'joel', 'amos', 'obadiah', 'jonah', 'micah', 'nahum', 'habakkuk', 'zephaniah', 'haggai',
-    'zechariah', 'malachi', 'romans', 'proverbs', 'isaiah', 'matthew', 'mark', 'john',
-]
+GUIDES = [entry['slug'] for entry in GUIDE_LIBRARY]
 
 
 def assert_true(condition: bool, message: str) -> None:
@@ -17,7 +15,10 @@ def main() -> None:
     index = (ROOT / 'index.html').read_text()
     all_guides = (ROOT / 'all-guides.html').read_text()
 
-    assert_true(index.count('preview-card') == 6, 'Homepage should show exactly 6 preview cards')
+    assert_true(
+        index.count('preview-card') == len(FEATURED_GUIDE_SLUGS),
+        'Homepage should show the configured number of preview cards',
+    )
     assert_true('More Study Guides' in index, 'Homepage should include the More Study Guides button')
     assert_true('all-guides.html' in index, 'Homepage should link to all-guides.html')
 
