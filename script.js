@@ -199,5 +199,40 @@ if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
 }
 
+document.querySelectorAll('[data-video-trigger]').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    const targetId = trigger.getAttribute('data-video-trigger');
+    const button = targetId ? document.getElementById(targetId) : null;
+    if (button && button.matches('[data-youtube-embed]')) {
+      window.setTimeout(() => button.click(), 150);
+    }
+  });
+});
+
+document.querySelectorAll('[data-youtube-embed]').forEach((button) => {
+  button.addEventListener('click', () => {
+    if (button.dataset.loaded === 'true') {
+      return;
+    }
+
+    const src = button.getAttribute('data-youtube-embed');
+    if (!src) {
+      return;
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.className = 'embedded-video-frame';
+    iframe.src = `${src}&autoplay=1&rel=0`;
+    iframe.title = 'Concordia Bible Institute YouTube player';
+    iframe.loading = 'lazy';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+
+    button.replaceWith(iframe);
+    button.dataset.loaded = 'true';
+  });
+});
+
 observeFadeUps();
 renderGuides();

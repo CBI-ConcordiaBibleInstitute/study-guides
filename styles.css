@@ -1122,6 +1122,100 @@ body.modal-open {
   background: linear-gradient(180deg, rgba(255, 248, 250, 0.95), rgba(255, 255, 255, 0.98));
 }
 
+.embedded-video-shell {
+  margin: 1.5rem 0 1rem;
+}
+
+.embedded-video-preview,
+.embedded-video-frame {
+  width: 100%;
+  border: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
+}
+
+.embedded-video-preview {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  min-height: 420px;
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  align-content: end;
+  text-align: left;
+  color: #fff;
+  cursor: pointer;
+  background:
+    linear-gradient(180deg, rgba(9, 14, 28, 0.14) 0%, rgba(9, 14, 28, 0.82) 100%),
+    radial-gradient(circle at top right, rgba(255, 107, 107, 0.85), transparent 36%),
+    linear-gradient(135deg, #18181b, #7f1d1d 54%, #111827);
+}
+
+.embedded-video-preview:hover,
+.embedded-video-preview:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.22);
+}
+
+.embedded-video-preview__badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.embedded-video-preview__title {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 800;
+  max-width: 18ch;
+}
+
+.embedded-video-preview__text,
+.guide-inline-note {
+  color: var(--muted);
+}
+
+.embedded-video-preview__text {
+  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.embedded-video-preview__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 48px;
+  padding: 0.8rem 1.15rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #991b1b;
+  font-weight: 800;
+}
+
+.embedded-video-frame {
+  aspect-ratio: 16 / 9;
+  min-height: 420px;
+  background: #000;
+}
+
+.guide-inline-note {
+  margin: 0 0 1rem;
+}
+
+@media (max-width: 640px) {
+  .embedded-video-preview,
+  .embedded-video-frame {
+    min-height: 260px;
+    border-radius: 22px;
+  }
+}
+
 .guide-checklist {
   display: grid;
   gap: 1rem;
