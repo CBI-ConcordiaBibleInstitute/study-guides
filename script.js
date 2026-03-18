@@ -1,14 +1,87 @@
-
 const pageLoader = document.getElementById('pageLoader');
 const siteContent = document.getElementById('siteContent');
 const guideGrid = document.getElementById('guideGrid');
-const cards = [...document.querySelectorAll('.guide-card')];
 const filterButtons = [...document.querySelectorAll('.filter-btn')];
 const searchInput = document.getElementById('guideSearch');
 const header = document.querySelector('.site-header');
 const progressBar = document.getElementById('scrollProgress');
 const heroShape = document.querySelector('.hero-bg-shape');
 const yearNode = document.getElementById('year');
+const moreGuidesButton = document.getElementById('moreGuidesButton');
+const guideSummaryHeading = document.getElementById('guideSummaryHeading');
+const guideSummaryText = document.getElementById('guideSummaryText');
+
+const FEATURED_LIMIT = 6;
+
+const guideDefinitions = [
+  { slug: 'genesis', title: 'Genesis Study Guide', description: 'Beginnings, covenant promises, and the God who forms a people.', image: 'images/genesis.svg', href: 'guides/genesis.html', categories: ['old-testament'] },
+  { slug: 'exodus', title: 'Exodus Study Guide', description: 'Deliverance, covenant, and God\'s presence with a redeemed people.', image: 'images/exodus.svg', href: 'guides/exodus.html', categories: ['old-testament'] },
+  { slug: 'leviticus', title: 'Leviticus Study Guide', description: 'Holiness, worship, and learning to live as God\'s distinct people.', image: 'images/leviticus.svg', href: 'guides/leviticus.html', categories: ['old-testament'] },
+  { slug: 'numbers', title: 'Numbers Study Guide', description: 'Wilderness testing, faithful leadership, and God\'s steady guidance.', image: 'images/numbers.svg', href: 'guides/numbers.html', categories: ['old-testament'] },
+  { slug: 'psalms', title: 'Psalms Study Guide', description: 'Prayers, poetry, and worship that shape a life with God.', image: 'images/psalms.svg', href: 'guides/psalms.html', categories: ['old-testament', 'wisdom-books'] },
+  { slug: 'ecclesiastes', title: 'Ecclesiastes Study Guide', description: 'Wisdom for life\'s mysteries, limits, and lasting meaning in God.', image: 'images/ecclesiastes.svg', href: 'guides/ecclesiastes.html', categories: ['old-testament', 'wisdom-books'] },
+  { slug: 'song-of-songs', title: 'Song of Songs Study Guide', description: 'Love, delight, and the beauty of covenant affection.', image: 'images/song-of-songs.svg', href: 'guides/song-of-songs.html', categories: ['old-testament', 'wisdom-books'] },
+  { slug: 'hosea', title: 'Hosea Study Guide', description: 'Covenant love, unfaithfulness, and God\'s relentless compassion.', image: 'images/hosea.svg', href: 'guides/hosea.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'joel', title: 'Joel Study Guide', description: 'Repentance, the day of the Lord, and the promise of God\'s Spirit.', image: 'images/joel.svg', href: 'guides/joel.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'amos', title: 'Amos Study Guide', description: 'Justice, worship, and the prophetic call to righteousness.', image: 'images/amos.svg', href: 'guides/amos.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'obadiah', title: 'Obadiah Study Guide', description: 'Pride, justice, and the Lord\'s rule over every nation.', image: 'images/obadiah.svg', href: 'guides/obadiah.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'jonah', title: 'Jonah Study Guide', description: 'Understanding God\'s mercy and Jonah\'s struggle with grace.', image: 'images/jonah.svg', href: 'guides/jonah.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'micah', title: 'Micah Study Guide', description: 'Justice, mercy, and hope for God\'s shepherd-king.', image: 'images/micah.svg', href: 'guides/micah.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'nahum', title: 'Nahum Study Guide', description: 'Judgment against violence and the comfort of God\'s justice.', image: 'images/nahum.svg', href: 'guides/nahum.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'habakkuk', title: 'Habakkuk Study Guide', description: 'Honest questions, steadfast faith, and rejoicing in God.', image: 'images/habakkuk.svg', href: 'guides/habakkuk.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'zephaniah', title: 'Zephaniah Study Guide', description: 'The day of the Lord, purification, and songs of restoration.', image: 'images/zephaniah.svg', href: 'guides/zephaniah.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'haggai', title: 'Haggai Study Guide', description: 'Renewed priorities, courageous rebuilding, and future glory.', image: 'images/haggai.svg', href: 'guides/haggai.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'zechariah', title: 'Zechariah Study Guide', description: 'Visions, repentance, and hope in God\'s coming king.', image: 'images/zechariah.svg', href: 'guides/zechariah.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'malachi', title: 'Malachi Study Guide', description: 'Covenant faithfulness, wholehearted worship, and promised renewal.', image: 'images/malachi.svg', href: 'guides/malachi.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'romans', title: 'Romans Study Guide', description: 'Grace, faith, and the gospel that transforms communities.', image: 'images/romans.svg', href: 'guides/romans.html', categories: ['new-testament'] },
+  { slug: 'revelation', title: 'Revelation Study Guide', description: 'Hope, endurance, and the victory of the Lamb over evil.', image: 'images/revelation.svg', href: 'guides/revelation.html', categories: ['new-testament'] },
+  { slug: 'proverbs', title: 'Proverbs Study Guide', description: 'Ancient wisdom for discernment, character, and daily choices.', image: 'images/proverbs.svg', href: 'guides/proverbs.html', categories: ['old-testament', 'wisdom-books'] },
+  { slug: 'isaiah', title: 'Isaiah Study Guide', description: 'Hope, justice, and the vision of God\'s coming kingdom.', image: 'images/isaiah.svg', href: 'guides/isaiah.html', categories: ['old-testament', 'prophets'] },
+  { slug: 'matthew', title: 'Matthew Study Guide', description: 'Following Jesus as King in the fulfillment story of Israel.', image: 'images/matthew.svg', href: 'guides/matthew.html', categories: ['new-testament', 'gospels'] },
+  { slug: 'mark', title: 'Mark Study Guide', description: 'A fast-paced journey through Jesus\' mission and sacrifice.', image: 'images/mark.svg', href: 'guides/mark.html', categories: ['new-testament', 'gospels'] },
+  { slug: 'john', title: 'John Study Guide', description: 'Encountering Jesus through signs, belief, and new life.', image: 'images/john.svg', href: 'guides/john.html', categories: ['new-testament', 'gospels'] }
+];
+
+const episodeBlueprints = [
+  {
+    label: 'Episode 1',
+    focus: 'Series overview and big-picture context',
+    studyLabel: 'Overview study guide',
+    audioLabel: 'Podcast audio intro',
+    videoLabel: 'YouTube teaching video'
+  },
+  {
+    label: 'Episode 2',
+    focus: 'Key themes, structure, and major turning points',
+    studyLabel: 'Theme-based study guide',
+    audioLabel: 'Podcast audio discussion',
+    videoLabel: 'YouTube episode walkthrough'
+  },
+  {
+    label: 'Episode 3',
+    focus: 'Application, reflection, and group discussion prompts',
+    studyLabel: 'Application study guide',
+    audioLabel: 'Podcast audio reflection',
+    videoLabel: 'YouTube recap video'
+  }
+];
+
+const studyGuides = guideDefinitions.map((guide) => ({
+  ...guide,
+  searchIndex: [guide.title, guide.description, ...guide.categories].join(' ').toLowerCase(),
+  episodes: episodeBlueprints.map((episode, index) => ({
+    id: `${guide.slug}-episode-${index + 1}`,
+    title: `${guide.title.replace(' Study Guide', '')} ${episode.label}`,
+    focus: episode.focus,
+    studyLabel: episode.studyLabel,
+    audioLabel: episode.audioLabel,
+    videoLabel: episode.videoLabel,
+    studyHref: guide.href
+  }))
+}));
+
+let activeCategory = 'all';
+let isExpanded = false;
 
 window.addEventListener('DOMContentLoaded', () => {
   if (pageLoader && siteContent) {
@@ -35,37 +108,135 @@ const animateObserver = new IntersectionObserver(
   { threshold: 0.12 }
 );
 
-document.querySelectorAll('.fade-up').forEach((el) => animateObserver.observe(el));
-
 const normalize = (value) => value.toLowerCase().trim();
-let activeCategory = 'all';
 
-function applyFilters() {
-  if (!guideGrid || !searchInput) {
+function observeFadeUps() {
+  document.querySelectorAll('.fade-up').forEach((el) => {
+    if (!el.classList.contains('in-view')) {
+      animateObserver.observe(el);
+    }
+  });
+}
+
+function createCategoryBadges(categories) {
+  return categories
+    .map((category) => `<li>${category.replace(/-/g, ' ')}</li>`)
+    .join('');
+}
+
+function createEpisodeMarkup(episode) {
+  return `
+    <article class="episode-card">
+      <div class="episode-copy">
+        <p class="episode-label">${episode.title}</p>
+        <h4>${episode.focus}</h4>
+      </div>
+      <div class="resource-columns">
+        <div class="resource-group">
+          <span class="resource-group__title">Study Guide</span>
+          <a class="resource-pill" href="${episode.studyHref}">${episode.studyLabel}</a>
+        </div>
+        <div class="resource-group">
+          <span class="resource-group__title">Podcast Audio</span>
+          <span class="resource-pill resource-pill--muted">${episode.audioLabel}</span>
+        </div>
+        <div class="resource-group">
+          <span class="resource-group__title">YouTube Video</span>
+          <span class="resource-pill resource-pill--video">${episode.videoLabel}</span>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function createGuideMarkup(guide) {
+  return `
+    <article class="guide-card fade-up" data-title="${guide.title}" data-category="${guide.categories.join(' ')}">
+      <div class="guide-card__hero">
+        <img src="${guide.image}" alt="Illustration for ${guide.title}" loading="lazy" />
+        <div class="card-body">
+          <div class="card-heading-row">
+            <h3>${guide.title}</h3>
+            <span class="episode-count">${guide.episodes.length} Episodes</span>
+          </div>
+          <p>${guide.description}</p>
+          <ul class="card-tags">${createCategoryBadges(guide.categories)}</ul>
+          <div class="guide-actions-row">
+            <a class="secondary-button" href="${guide.href}">Open Guide Page</a>
+          </div>
+        </div>
+      </div>
+      <div class="episode-list">
+        ${guide.episodes.map(createEpisodeMarkup).join('')}
+      </div>
+    </article>
+  `;
+}
+
+function getFilteredGuides() {
+  const searchTerm = normalize(searchInput?.value || '');
+
+  return studyGuides.filter((guide) => {
+    const matchesCategory = activeCategory === 'all' || guide.categories.includes(activeCategory);
+    const matchesSearch = !searchTerm || guide.searchIndex.includes(searchTerm) || guide.episodes.some((episode) => normalize(`${episode.title} ${episode.focus}`).includes(searchTerm));
+    return matchesCategory && matchesSearch;
+  });
+}
+
+function renderGuides() {
+  if (!guideGrid) {
     return;
   }
 
-  const searchTerm = normalize(searchInput.value);
+  const filteredGuides = getFilteredGuides();
+  const shouldShowAll = isExpanded || normalize(searchInput?.value || '').length > 0 || activeCategory !== 'all';
+  const visibleGuides = shouldShowAll ? filteredGuides : filteredGuides.slice(0, FEATURED_LIMIT);
 
-  cards.forEach((card) => {
-    const title = normalize(card.dataset.title || '');
-    const categories = normalize(card.dataset.category || '').split(' ');
-    const matchesCategory = activeCategory === 'all' || categories.includes(activeCategory);
-    const matchesSearch = title.includes(searchTerm);
-    card.classList.toggle('is-hidden', !(matchesCategory && matchesSearch));
-  });
+  guideGrid.innerHTML = visibleGuides.length
+    ? visibleGuides.map(createGuideMarkup).join('')
+    : '<p class="empty-state fade-up">No study guides match that search yet. Try a different title or filter.</p>';
+
+  if (guideSummaryHeading && guideSummaryText) {
+    if (!filteredGuides.length) {
+      guideSummaryHeading.textContent = 'No study guides found';
+      guideSummaryText.textContent = 'Try clearing the search or switching back to All categories.';
+    } else if (shouldShowAll) {
+      guideSummaryHeading.textContent = `Showing ${filteredGuides.length} study guides`;
+      guideSummaryText.textContent = 'All matching series are visible below with episode-by-episode study guide, podcast audio, and YouTube video sections.';
+    } else {
+      guideSummaryHeading.textContent = `Showing ${visibleGuides.length} featured study guides`;
+      guideSummaryText.textContent = `Use More to reveal ${filteredGuides.length - visibleGuides.length} additional study guides and their episode resources.`;
+    }
+  }
+
+  if (moreGuidesButton) {
+    const hasMore = filteredGuides.length > FEATURED_LIMIT && !shouldShowAll;
+    moreGuidesButton.hidden = !filteredGuides.length || (filteredGuides.length <= FEATURED_LIMIT && !isExpanded);
+    moreGuidesButton.textContent = shouldShowAll && isExpanded ? 'Show Fewer Guides' : `More Study Guides (${Math.max(filteredGuides.length - FEATURED_LIMIT, 0)})`;
+    moreGuidesButton.setAttribute('aria-expanded', String(isExpanded));
+    moreGuidesButton.classList.toggle('is-hidden', !hasMore && !isExpanded && activeCategory === 'all' && !normalize(searchInput?.value || '').length);
+  }
+
+  observeFadeUps();
 }
 
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     activeCategory = button.dataset.category;
     filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
-    applyFilters();
+    renderGuides();
   });
 });
 
 if (searchInput) {
-  searchInput.addEventListener('input', applyFilters);
+  searchInput.addEventListener('input', renderGuides);
+}
+
+if (moreGuidesButton) {
+  moreGuidesButton.addEventListener('click', () => {
+    isExpanded = !isExpanded;
+    renderGuides();
+  });
 }
 
 window.addEventListener('scroll', () => {
@@ -90,4 +261,5 @@ if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
 }
 
-applyFilters();
+observeFadeUps();
+renderGuides();
