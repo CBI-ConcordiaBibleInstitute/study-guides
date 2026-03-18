@@ -10,9 +10,6 @@ const yearNode = document.getElementById('year');
 const moreGuidesButton = document.getElementById('moreGuidesButton');
 const guideSummaryHeading = document.getElementById('guideSummaryHeading');
 const guideSummaryText = document.getElementById('guideSummaryText');
-const guideModal = document.getElementById('guideModal');
-const guideModalContent = document.getElementById('guideModalContent');
-const guideModalClose = document.getElementById('guideModalClose');
 
 const FEATURED_LIMIT = 6;
 
@@ -45,53 +42,14 @@ const guideDefinitions = [
   { slug: 'john', title: 'John Study Guide', description: 'Encountering Jesus through signs, belief, and new life.', image: 'images/john.svg', href: 'guides/john.html', categories: ['new-testament', 'gospels'] }
 ];
 
-const episodeBlueprints = [
-  {
-    label: 'Episode 1',
-    focus: 'Series overview and big-picture context',
-    studyLabel: 'Overview study guide',
-    audioLabel: 'Podcast audio intro',
-    videoLabel: 'YouTube teaching video'
-  },
-  {
-    label: 'Episode 2',
-    focus: 'Key themes, structure, and major turning points',
-    studyLabel: 'Theme-based study guide',
-    audioLabel: 'Podcast audio discussion',
-    videoLabel: 'YouTube episode walkthrough'
-  },
-  {
-    label: 'Episode 3',
-    focus: 'Application, reflection, and group discussion prompts',
-    studyLabel: 'Application study guide',
-    audioLabel: 'Podcast audio reflection',
-    videoLabel: 'YouTube recap video'
-  }
-];
-
 const studyGuides = guideDefinitions.map((guide) => ({
   ...guide,
-  overview: `${guide.title.replace(' Study Guide', '')} invites readers to slow down, notice the movement of the text, and respond to God's character with trust, obedience, and worship. Use this guide for personal study, group discussion, and teaching preparation.`,
-  highlights: [
-    `Big-picture context for ${guide.title.replace(' Study Guide', '')}.`,
-    'Key themes, structure, and major turning points.',
-    'Discussion prompts and practical faith application.'
-  ],
   searchIndex: [guide.title, guide.description, ...guide.categories].join(' ').toLowerCase(),
-  episodes: episodeBlueprints.map((episode, index) => ({
-    id: `${guide.slug}-episode-${index + 1}`,
-    title: `${guide.title.replace(' Study Guide', '')} ${episode.label}`,
-    focus: episode.focus,
-    studyLabel: episode.studyLabel,
-    audioLabel: episode.audioLabel,
-    videoLabel: episode.videoLabel,
-    studyHref: guide.href
-  }))
+  episodeCount: guide.slug === 'genesis' ? 4 : 3
 }));
 
 let activeCategory = 'all';
 let isExpanded = false;
-let lastFocusedElement = null;
 
 window.addEventListener('DOMContentLoaded', () => {
   if (pageLoader && siteContent) {
@@ -134,89 +92,22 @@ function createCategoryBadges(categories) {
     .join('');
 }
 
-function createEpisodeMarkup(episode) {
-  return `
-    <article class="episode-card">
-      <div class="episode-copy">
-        <p class="episode-label">${episode.title}</p>
-        <h4>${episode.focus}</h4>
-      </div>
-      <div class="resource-columns">
-        <div class="resource-group">
-          <span class="resource-group__title">Study Guide</span>
-          <a class="resource-pill" href="${episode.studyHref}">${episode.studyLabel}</a>
-        </div>
-        <div class="resource-group">
-          <span class="resource-group__title">Podcast Audio</span>
-          <span class="resource-pill resource-pill--muted">${episode.audioLabel}</span>
-        </div>
-        <div class="resource-group">
-          <span class="resource-group__title">YouTube Video</span>
-          <span class="resource-pill resource-pill--video">${episode.videoLabel}</span>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
 function createGuideMarkup(guide) {
   return `
     <article class="guide-card fade-up" data-title="${guide.title}" data-category="${guide.categories.join(' ')}">
-      <button class="guide-card__button" type="button" data-guide-slug="${guide.slug}" aria-label="Open details for ${guide.title}">
+      <a class="guide-card__button" href="${guide.href}" aria-label="Open full guide page for ${guide.title}">
         <img src="${guide.image}" alt="Illustration for ${guide.title}" loading="lazy" />
         <div class="card-body">
           <div class="card-heading-row">
             <h3>${guide.title}</h3>
-            <span class="episode-count">${guide.episodes.length} Episodes</span>
+            <span class="episode-count">${guide.episodeCount} Sections</span>
           </div>
           <p>${guide.description}</p>
           <ul class="card-tags">${createCategoryBadges(guide.categories)}</ul>
-          <span class="guide-card__link">View guide details</span>
+          <span class="guide-card__link">Open full guide page</span>
         </div>
-      </button>
+      </a>
     </article>
-  `;
-}
-
-function createGuideModalMarkup(guide) {
-  return `
-    <div class="guide-modal__hero">
-      <div class="guide-modal__media">
-        <img src="${guide.image}" alt="Illustration for ${guide.title}" />
-      </div>
-      <div class="guide-modal__copy">
-        <p class="eyebrow">Concordia Bible Institute</p>
-        <div class="guide-modal__heading-row">
-          <h2 id="guideModalTitle">${guide.title}</h2>
-          <span class="episode-count">${guide.episodes.length} Episodes</span>
-        </div>
-        <p>${guide.description}</p>
-        <ul class="guide-tag-list">${createCategoryBadges(guide.categories)}</ul>
-        <div class="guide-actions-row guide-actions-row--modal">
-          <a class="cta-button" href="${guide.href}">Open full guide page</a>
-          <button class="secondary-button" type="button" data-close-modal="true">Back to library</button>
-        </div>
-      </div>
-    </div>
-    <div class="guide-modal__sections">
-      <article class="guide-section-card">
-        <h3>Overview</h3>
-        <p>${guide.overview}</p>
-      </article>
-      <article class="guide-section-card">
-        <h3>What you will explore</h3>
-        <ol class="guide-list">${guide.highlights.map((item) => `<li>${item}</li>`).join('')}</ol>
-      </article>
-    </div>
-    <section class="guide-modal__episodes">
-      <div class="guide-modal__section-heading">
-        <p class="eyebrow">Episode Resources</p>
-        <h3>Study guide, audio, and video for each episode</h3>
-      </div>
-      <div class="episode-list episode-list--modal">
-        ${guide.episodes.map(createEpisodeMarkup).join('')}
-      </div>
-    </section>
   `;
 }
 
@@ -225,7 +116,7 @@ function getFilteredGuides() {
 
   return studyGuides.filter((guide) => {
     const matchesCategory = activeCategory === 'all' || guide.categories.includes(activeCategory);
-    const matchesSearch = !searchTerm || guide.searchIndex.includes(searchTerm) || guide.episodes.some((episode) => normalize(`${episode.title} ${episode.focus}`).includes(searchTerm));
+    const matchesSearch = !searchTerm || guide.searchIndex.includes(searchTerm);
     return matchesCategory && matchesSearch;
   });
 }
@@ -249,10 +140,10 @@ function renderGuides() {
       guideSummaryText.textContent = 'Try clearing the search or switching back to All categories.';
     } else if (shouldShowAll) {
       guideSummaryHeading.textContent = `Showing ${filteredGuides.length} study guides`;
-      guideSummaryText.textContent = 'Select any card to open a modern detail view with episodes and resources.';
+      guideSummaryText.textContent = 'Each card now opens directly to its own full guide page.';
     } else {
       guideSummaryHeading.textContent = `Showing ${visibleGuides.length} featured study guides`;
-      guideSummaryText.textContent = `Use More to reveal ${filteredGuides.length - visibleGuides.length} additional study guides, then click a card for full details.`;
+      guideSummaryText.textContent = `Use More to reveal ${filteredGuides.length - visibleGuides.length} additional study guides, then open any full guide page directly.`;
     }
   }
 
@@ -264,44 +155,7 @@ function renderGuides() {
     moreGuidesButton.classList.toggle('is-hidden', !hasMore && !isExpanded && activeCategory === 'all' && !normalize(searchInput?.value || '').length);
   }
 
-  guideGrid.querySelectorAll('[data-guide-slug]').forEach((button) => {
-    button.addEventListener('click', () => openGuideModal(button.dataset.guideSlug, button));
-  });
-
   observeFadeUps();
-}
-
-function openGuideModal(slug, trigger = document.activeElement) {
-  if (!guideModal || !guideModalContent) {
-    return;
-  }
-
-  const guide = studyGuides.find((item) => item.slug === slug);
-  if (!guide) {
-    return;
-  }
-
-  lastFocusedElement = trigger instanceof HTMLElement ? trigger : null;
-  guideModalContent.innerHTML = createGuideModalMarkup(guide);
-  guideModal.hidden = false;
-  document.body.classList.add('modal-open');
-  guideModal.setAttribute('aria-hidden', 'false');
-  guideModalClose?.focus();
-
-  guideModalContent.querySelector('[data-close-modal]')?.addEventListener('click', closeGuideModal);
-}
-
-
-function closeGuideModal() {
-  if (!guideModal || guideModal.hidden) {
-    return;
-  }
-
-  guideModal.hidden = true;
-  guideModal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
-  guideModalContent.innerHTML = '';
-  lastFocusedElement?.focus();
 }
 
 filterButtons.forEach((button) => {
@@ -322,24 +176,6 @@ if (moreGuidesButton) {
     renderGuides();
   });
 }
-
-if (guideModalClose) {
-  guideModalClose.addEventListener('click', closeGuideModal);
-}
-
-if (guideModal) {
-  guideModal.addEventListener('click', (event) => {
-    if (event.target === guideModal || event.target.classList.contains('guide-modal__backdrop')) {
-      closeGuideModal();
-    }
-  });
-}
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    closeGuideModal();
-  }
-});
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
