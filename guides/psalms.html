@@ -3,49 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Psalms study guide and episode library from Concordia Bible Institute." />
   <title>Psalms Study Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --maroon: #6b1025;
-      --maroon-dark: #560c1d;
-      --bg: #ffffff;
-      --text: #1f2937;
-      --muted: #5f6b7a;
-      --border: #e4e7ec;
-      --surface: #ffffff;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Inter, sans-serif; background: var(--bg); color: var(--text); }
-    .page-header { background: var(--maroon); color: #fff; }
-    .header-inner { max-width: 920px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-    .brand { font-weight: 700; letter-spacing: -0.01em; }
-    .back-link { color: #ffd8df; text-decoration: none; font-weight: 600; padding: 0.45rem 0.85rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); }
-    .back-link:hover { color: #fff; background: rgba(255,255,255,0.12); }
-    main { max-width: 920px; margin: 2.2rem auto; padding: 0 1.25rem; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 2rem; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06); }
-    h1 { margin: 0 0 0.8rem; font-size: clamp(1.7rem, 4vw, 2.2rem); }
-    p { margin: 0; color: var(--muted); line-height: 1.7; }
-    .page-footer { margin-top: 3rem; background: var(--maroon-dark); color: #f5b8c5; text-align: center; padding: 1rem 1.25rem; font-size: 0.92rem; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
-  <header class="page-header">
-    <div class="header-inner">
-      <div class="brand">Concordia Bible Institute</div>
-      <a class="back-link" href="../index.html">← Back to Library</a>
+<body class="guide-page">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="logo header-brand" href="../index.html" aria-label="Bible Study Guide Library home">
+        <img src="../images/concordia-logo.svg" alt="Concordia Bible Institute logo" class="header-logo" />
+        <span class="brand-text">CBI-StudyGuideLibrary</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../all-guides.html">Study Guides</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#resources">Resources</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <article class="card">
-      <h1>Psalms Study Guide</h1>
-      <p>This guide page is ready for deeper content, discussion prompts, and chapter-by-chapter notes for the book of Psalms.</p>
-    </article>
+  <main class="guide-main">
+    <div class="container">
+      <section class="guide-hero fade-up">
+        <div class="guide-hero-card">
+          <img src="../images/psalms.svg" alt="Artwork for the Psalms study guide" />
+        </div>
+        <article class="guide-hero-card guide-hero-copy">
+          <p class="eyebrow">Concordia Bible Institute</p>
+          <h1>Psalms Study Guide</h1>
+          <p>Prayers, poetry, and worship that shape a life with God.</p>
+          <ul class="guide-tag-list"><li>Old Testament</li><li>Wisdom Books</li></ul>
+          <div class="guide-actions">
+            <a class="cta-button" href="../all-guides.html">Browse All Guides</a>
+            <a class="secondary-button" href="#episodes">View Episodes</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="guide-content-grid">
+        <article class="guide-section-card fade-up">
+          <h2>Overview</h2>
+          <p>Psalms invites readers to slow down, notice the movement of the text, and respond to God's character with trust, obedience, and worship. This page is designed as a launching point for personal study, group discussion, podcast planning, and video teaching.</p>
+        </article>
+
+        <article class="guide-section-card fade-up" id="study-focus">
+          <h2>Key Themes</h2>
+          <ol class="guide-list"><li>The Psalms give language for joy, grief, trust, and praise.</li><li>Worship forms the imagination of God's people.</li><li>Messianic hope and covenant faithfulness echo throughout the collection.</li></ol>
+        </article>
+
+        <article class="guide-section-card guide-section-card--wide fade-up">
+          <h2>Suggested Study Path</h2>
+          <ol class="guide-list"><li>Compare laments, hymns, royal psalms, and thanksgiving songs.</li><li>Pray selected psalms aloud as part of personal or group study.</li><li>Identify recurring themes of refuge, kingship, and steadfast love.</li></ol>
+        </article>
+      </section>
+
+      <section class="episode-section" id="episodes">
+        <div class="section-heading fade-up section-heading--narrow">
+          <p class="eyebrow">Episodes</p>
+          <h2>Psalms episode study guide library</h2>
+          <p>Each episode separates the study guide, podcast audio preparation, and YouTube video teaching flow so you can organize content clearly.</p>
+        </div>
+        <div class="episode-grid">
+        <article class="episode-card fade-up">
+          <p class="episode-number">Episode 01</p>
+          <h3>Psalms Episode 1: Book Overview</h3>
+          <p>The Psalms give language for joy, grief, trust, and praise.</p>
+          <ul class="episode-resource-tags">
+            <li>Study Guide</li>
+            <li>Podcast Audio</li>
+            <li>YouTube Video</li>
+          </ul>
+        </article>
+        <article class="episode-card fade-up">
+          <p class="episode-number">Episode 02</p>
+          <h3>Psalms Episode 2: Key Themes</h3>
+          <p>Worship forms the imagination of God's people.</p>
+          <ul class="episode-resource-tags">
+            <li>Study Guide</li>
+            <li>Podcast Audio</li>
+            <li>YouTube Video</li>
+          </ul>
+        </article>
+        <article class="episode-card fade-up">
+          <p class="episode-number">Episode 03</p>
+          <h3>Psalms Episode 3: Teaching and Application</h3>
+          <p>Messianic hope and covenant faithfulness echo throughout the collection.</p>
+          <ul class="episode-resource-tags">
+            <li>Study Guide</li>
+            <li>Podcast Audio</li>
+            <li>YouTube Video</li>
+          </ul>
+        </article>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <div class="section-heading fade-up section-heading--narrow">
+          <p class="eyebrow">Episode Resources</p>
+          <h2>Study guide, podcast audio, and YouTube video tracks</h2>
+        </div>
+        <div class="resource-panel-list">
+        <article class="guide-section-card resource-panel fade-up">
+          <h3>Psalms Episode 1: Book Overview</h3>
+          <div class="resource-grid">
+            <section class="resource-item">
+              <p class="resource-label">Study Guide</p>
+              <p>Guided reading notes and discussion prompts focused on compare laments, hymns, royal psalms, and thanksgiving songs.</p>
+            </section>
+            <section class="resource-item">
+              <p class="resource-label">Podcast Audio</p>
+              <p>Audio podcast outline introducing the major story movement and key background for Psalms.</p>
+            </section>
+            <section class="resource-item">
+              <p class="resource-label">YouTube Video</p>
+              <p>YouTube teaching video notes highlighting the opening movements and big-picture structure of Psalms.</p>
+            </section>
+          </div>
+        </article>
+        <article class="guide-section-card resource-panel fade-up">
+          <h3>Psalms Episode 2: Key Themes</h3>
+          <div class="resource-grid">
+            <section class="resource-item">
+              <p class="resource-label">Study Guide</p>
+              <p>Theme tracing worksheet for students and groups built around pray selected psalms aloud as part of personal or group study.</p>
+            </section>
+            <section class="resource-item">
+              <p class="resource-label">Podcast Audio</p>
+              <p>Podcast audio segment ideas unpacking the main theological focus and teaching moments in Psalms.</p>
+            </section>
+            <section class="resource-item">
+              <p class="resource-label">YouTube Video</p>
+              <p>YouTube lesson talking points for a visual walkthrough of central themes in Psalms.</p>
+            </section>
+          </div>
+        </article>
+        <article class="guide-section-card resource-panel fade-up">
+          <h3>Psalms Episode 3: Teaching and Application</h3>
+          <div class="resource-grid">
+            <section class="resource-item">
+              <p class="resource-label">Study Guide</p>
+              <p>Leader study guide with reflection questions and takeaways connected to identify recurring themes of refuge, kingship, and steadfast love.</p>
+            </section>
+            <section class="resource-item">
+              <p class="resource-label">Podcast Audio</p>
+              <p>Application-focused podcast audio notes that translate the message of Psalms into group conversation.</p>
+            </section>
+            <section class="resource-item">
+              <p class="resource-label">YouTube Video</p>
+              <p>YouTube video segment plan for recap, application, and next-step teaching from Psalms.</p>
+            </section>
+          </div>
+        </article>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <footer class="page-footer">© Concordia Bible Institute</footer>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <h3>Concordia Bible Institute</h3>
+        <p>Training disciples through faithful biblical teaching and practical ministry formation.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../all-guides.html">Study Guides</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#resources">Resources</a></li>
+      </ul>
+      <ul class="social-links" aria-label="Social media links">
+        <li><a href="#" aria-label="Instagram">◐</a></li>
+        <li><a href="#" aria-label="YouTube">▶</a></li>
+        <li><a href="#" aria-label="X">✕</a></li>
+      </ul>
+    </div>
+    <p class="copyright">© <span id="year"></span> Concordia Bible Institute. All rights reserved.</p>
+  </footer>
+
+  <script src="../script.js"></script>
 </body>
 </html>

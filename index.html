@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover modern Bible study guides with searchable topics and categories." />
+  <meta name="description" content="Discover featured Bible study guides with episode-based teaching resources from Concordia Bible Institute." />
   <title>Bible Study Guide Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="is-loading">
+<body class="is-loading home-page">
   <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading website">
     <div class="loader-mark" aria-hidden="true">
       <span class="loader-ring loader-ring--outer"></span>
@@ -21,75 +21,87 @@
   </div>
 
   <div id="siteContent" aria-hidden="true">
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="logo header-brand" href="index.html" aria-label="Bible Study Guide Library home">
-        <img src="images/concordia-logo.svg" alt="Concordia Bible Institute logo" class="header-logo" />
-        <span class="brand-text">CBI-StudyGuideLibrary</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="#top">Home</a></li>
-          <li><a href="#study-guides">Study Guides</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resources">Resources</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="hero">
-      <div class="hero-bg-shape" aria-hidden="true"></div>
-      <div class="container hero-content fade-up">
-        <p class="eyebrow">Concordia Bible Institute</p>
-        <h1>Concordia Bible Institute STUDY GUIDES</h1>
-        <p class="subtitle">Deepen your understanding of Scripture through structured, Christ-centered study guides.</p>
-        <a class="cta-button" href="#study-guides">Browse Guides</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a class="logo header-brand" href="index.html" aria-label="Bible Study Guide Library home">
+          <img src="images/concordia-logo.svg" alt="Concordia Bible Institute logo" class="header-logo" />
+          <span class="brand-text">CBI-StudyGuideLibrary</span>
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all-guides.html">Study Guides</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#resources">Resources</a></li>
+          </ul>
+        </nav>
       </div>
-      <a class="scroll-indicator" href="#study-guides" aria-label="Scroll to study guides">
-        <span></span>
-      </a>
-    </section>
+    </header>
 
-    <section class="library section" id="study-guides">
-      <div class="container">
-        <div class="section-heading fade-up">
-          <p class="eyebrow">Library</p>
-          <h2>Explore our Bible study guide library</h2>
-          <p>Search and filter by biblical themes to discover study resources from Concordia Bible Institute.</p>
-        </div>
-
-        <div class="controls fade-up">
-          <label class="search-wrap" for="guideSearch">
-            <span class="sr-only">Search guides</span>
-            <input id="guideSearch" type="search" placeholder="Search by guide title..." autocomplete="off" />
-          </label>
-
-          <div class="category-filters" role="group" aria-label="Guide category filters">
-            <button class="filter-btn active" data-category="all">All</button>
-            <button class="filter-btn" data-category="old-testament">Old Testament</button>
-            <button class="filter-btn" data-category="new-testament">New Testament</button>
-            <button class="filter-btn" data-category="wisdom-books">Wisdom Books</button>
-            <button class="filter-btn" data-category="gospels">Gospels</button>
-            <button class="filter-btn" data-category="prophets">Prophets</button>
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-bg-shape" aria-hidden="true"></div>
+        <div class="container hero-content fade-up">
+          <p class="eyebrow">Concordia Bible Institute</p>
+          <h1>Concordia Bible Institute STUDY GUIDES</h1>
+          <p class="subtitle">Browse featured study guides, then move into dedicated episode resources with study notes, podcast audio plans, and YouTube teaching outlines.</p>
+          <div class="hero-actions">
+            <a class="cta-button" href="all-guides.html">Explore All Study Guides</a>
+            <a class="secondary-button" href="#featured-guides">See Featured Guides</a>
           </div>
         </div>
+        <a class="scroll-indicator" href="#featured-guides" aria-label="Scroll to featured study guides">
+          <span></span>
+        </a>
+      </section>
 
-        <div class="guide-grid" id="guideGrid">
-          <article class="guide-card fade-up" data-title="Jonah Study Guide" data-category="old-testament prophets">
-            <a href="guides/jonah.html">
-              <img src="images/jonah.svg" alt="Illustration for Jonah study guide" loading="lazy" />
+      <section class="library section" id="featured-guides">
+        <div class="container">
+          <div class="section-heading fade-up">
+            <p class="eyebrow">Featured</p>
+            <h2>Start with a few featured study guides</h2>
+            <p>The homepage now highlights a small set of guides first. Use the More button to open the full library and browse every guide and episode collection.</p>
+          </div>
+
+          <div class="guide-grid preview-grid">
+          <article class="guide-card fade-up preview-card">
+            <a href="guides/genesis.html">
+              <img src="images/genesis.svg" alt="Illustration for Genesis study guide" loading="lazy" />
               <div class="card-body">
-                <h3>Jonah Study Guide</h3>
-                <p>Understanding God's mercy and Jonah's struggle with grace.</p>
+                <h3>Genesis Study Guide</h3>
+                <p>Beginnings, covenant promises, and the God who forms a people.</p>
               </div>
             </a>
           </article>
-
-          <article class="guide-card fade-up" data-title="Psalms Study Guide" data-category="old-testament wisdom-books">
+          <article class="guide-card fade-up preview-card">
+            <a href="guides/exodus.html">
+              <img src="images/exodus.svg" alt="Illustration for Exodus study guide" loading="lazy" />
+              <div class="card-body">
+                <h3>Exodus Study Guide</h3>
+                <p>Deliverance, covenant, and God's presence with a redeemed people.</p>
+              </div>
+            </a>
+          </article>
+          <article class="guide-card fade-up preview-card">
+            <a href="guides/leviticus.html">
+              <img src="images/leviticus.svg" alt="Illustration for Leviticus study guide" loading="lazy" />
+              <div class="card-body">
+                <h3>Leviticus Study Guide</h3>
+                <p>Holiness, worship, and learning to live as God's distinct people.</p>
+              </div>
+            </a>
+          </article>
+          <article class="guide-card fade-up preview-card">
+            <a href="guides/numbers.html">
+              <img src="images/numbers.svg" alt="Illustration for Numbers study guide" loading="lazy" />
+              <div class="card-body">
+                <h3>Numbers Study Guide</h3>
+                <p>Wilderness testing, faithful leadership, and God's steady guidance.</p>
+              </div>
+            </a>
+          </article>
+          <article class="guide-card fade-up preview-card">
             <a href="guides/psalms.html">
               <img src="images/psalms.svg" alt="Illustration for Psalms study guide" loading="lazy" />
               <div class="card-body">
@@ -98,106 +110,83 @@
               </div>
             </a>
           </article>
-
-          <article class="guide-card fade-up" data-title="Proverbs Study Guide" data-category="old-testament wisdom-books">
-            <a href="guides/proverbs.html">
-              <img src="images/proverbs.svg" alt="Illustration for Proverbs study guide" loading="lazy" />
+          <article class="guide-card fade-up preview-card">
+            <a href="guides/ecclesiastes.html">
+              <img src="images/ecclesiastes.svg" alt="Illustration for Ecclesiastes study guide" loading="lazy" />
               <div class="card-body">
-                <h3>Proverbs Study Guide</h3>
-                <p>Ancient wisdom for discernment, character, and daily choices.</p>
+                <h3>Ecclesiastes Study Guide</h3>
+                <p>Wisdom for life's mysteries, limits, and lasting meaning in God.</p>
               </div>
             </a>
           </article>
+          </div>
 
-          <article class="guide-card fade-up" data-title="Matthew Study Guide" data-category="new-testament gospels">
-            <a href="guides/matthew.html">
-              <img src="images/matthew.svg" alt="Illustration for Matthew study guide" loading="lazy" />
-              <div class="card-body">
-                <h3>Matthew Study Guide</h3>
-                <p>Following Jesus as King in the fulfillment story of Israel.</p>
-              </div>
-            </a>
-          </article>
-
-          <article class="guide-card fade-up" data-title="Mark Study Guide" data-category="new-testament gospels">
-            <a href="guides/mark.html">
-              <img src="images/mark.svg" alt="Illustration for Mark study guide" loading="lazy" />
-              <div class="card-body">
-                <h3>Mark Study Guide</h3>
-                <p>A fast-paced journey through Jesus' mission and sacrifice.</p>
-              </div>
-            </a>
-          </article>
-
-          <article class="guide-card fade-up" data-title="Romans Study Guide" data-category="new-testament">
-            <a href="guides/romans.html">
-              <img src="images/romans.svg" alt="Illustration for Romans study guide" loading="lazy" />
-              <div class="card-body">
-                <h3>Romans Study Guide</h3>
-                <p>Grace, faith, and the gospel that transforms communities.</p>
-              </div>
-            </a>
-          </article>
-
-          <article class="guide-card fade-up" data-title="Isaiah Study Guide" data-category="old-testament prophets">
-            <a href="guides/isaiah.html">
-              <img src="images/isaiah.svg" alt="Illustration for Isaiah study guide" loading="lazy" />
-              <div class="card-body">
-                <h3>Isaiah Study Guide</h3>
-                <p>Hope, justice, and the vision of God's coming kingdom.</p>
-              </div>
-            </a>
-          </article>
-
-          <article class="guide-card fade-up" data-title="John Study Guide" data-category="new-testament gospels">
-            <a href="guides/john.html">
-              <img src="images/john.svg" alt="Illustration for John study guide" loading="lazy" />
-              <div class="card-body">
-                <h3>John Study Guide</h3>
-                <p>Encountering Jesus through signs, belief, and new life.</p>
-              </div>
-            </a>
-          </article>
+          <div class="library-actions fade-up">
+            <a class="cta-button" href="all-guides.html">More Study Guides</a>
+            <p class="library-note">Open the full study-guide page to search every book, filter categories, and jump into episode-based resources.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section about" id="about">
-      <div class="container fade-up">
-        <h2>About Concordia Bible Institute</h2>
-        <p>Concordia Bible Institute equips believers, small groups, and ministry leaders with biblically grounded teaching, practical discipleship tools, and accessible learning pathways to deepen faith and strengthen biblical literacy.</p>
-      </div>
-    </section>
+      <section class="section pathway-section">
+        <div class="container fade-up">
+          <div class="section-heading section-heading--narrow">
+            <p class="eyebrow">How it Works</p>
+            <h2>Each study guide now leads into episodes and media resources</h2>
+            <p>Inside every guide page you will find episode groupings with a study-guide track, a podcast audio track, and a separate YouTube video track.</p>
+          </div>
+          <div class="pathway-grid">
+            <article class="pathway-card">
+              <h3>1. Study Guide</h3>
+              <p>Open a book page to see the overview, key themes, and suggested study path.</p>
+            </article>
+            <article class="pathway-card">
+              <h3>2. Episodes</h3>
+              <p>Each book page now includes multiple episodes for step-by-step teaching and discussion.</p>
+            </article>
+            <article class="pathway-card">
+              <h3>3. Audio + YouTube</h3>
+              <p>Every episode separates study materials from podcast audio and YouTube video teaching tracks.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-    <section class="section resources" id="resources">
-      <div class="container fade-up">
-        <h2>Concordia Resources</h2>
-        <p>Access Concordia Bible Institute study tools, teaching resources, and guided materials designed to support churches, families, and personal study journeys.</p>
-      </div>
-    </section>
-  </main>
+      <section class="section about" id="about">
+        <div class="container fade-up">
+          <h2>About Concordia Bible Institute</h2>
+          <p>Concordia Bible Institute equips believers, small groups, and ministry leaders with biblically grounded teaching, practical discipleship tools, and accessible learning pathways to deepen faith and strengthen biblical literacy.</p>
+        </div>
+      </section>
 
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div>
-        <h3>Concordia Bible Institute</h3>
-        <p>Training disciples through faithful biblical teaching and practical ministry formation.</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#study-guides">Study Guides</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#resources">Resources</a></li>
-      </ul>
-      <ul class="social-links" aria-label="Social media links">
-        <li><a href="#" aria-label="Instagram">◐</a></li>
-        <li><a href="#" aria-label="YouTube">▶</a></li>
-        <li><a href="#" aria-label="X">✕</a></li>
-      </ul>
-    </div>
-    <p class="copyright">© <span id="year"></span> Concordia Bible Institute. All rights reserved.</p>
-  </footer>
+      <section class="section resources" id="resources">
+        <div class="container fade-up">
+          <h2>Concordia Resources</h2>
+          <p>Access Concordia Bible Institute study tools, teaching resources, and guided materials designed to support churches, families, and personal study journeys.</p>
+        </div>
+      </section>
+    </main>
 
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div>
+          <h3>Concordia Bible Institute</h3>
+          <p>Training disciples through faithful biblical teaching and practical ministry formation.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="all-guides.html">Study Guides</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#resources">Resources</a></li>
+        </ul>
+        <ul class="social-links" aria-label="Social media links">
+          <li><a href="#" aria-label="Instagram">◐</a></li>
+          <li><a href="#" aria-label="YouTube">▶</a></li>
+          <li><a href="#" aria-label="X">✕</a></li>
+        </ul>
+      </div>
+      <p class="copyright">© <span id="year"></span> Concordia Bible Institute. All rights reserved.</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>

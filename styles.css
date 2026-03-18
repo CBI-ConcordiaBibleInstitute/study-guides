@@ -459,3 +459,291 @@ h1 { font-size: clamp(2.2rem, 4.8vw, 4.1rem); line-height: 1.1; margin: 0; lette
   70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(255, 255, 255, 0); }
   100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
+
+
+.guide-page {
+  background: linear-gradient(180deg, #fff8fa 0%, #ffffff 22%, #ffffff 100%);
+}
+
+.guide-main {
+  padding: 3rem 0 4.5rem;
+}
+
+.guide-hero {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.guide-hero-card,
+.guide-section-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.guide-hero-card {
+  display: grid;
+  overflow: hidden;
+}
+
+.guide-hero-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.guide-hero-copy {
+  padding: 2rem;
+}
+
+.guide-hero-copy h1 {
+  margin-bottom: 0.75rem;
+}
+
+.guide-hero-copy p {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+}
+
+.guide-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-tag-list li {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: #f7e8ed;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.guide-content-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.guide-section-card {
+  padding: 1.75rem;
+}
+
+.guide-section-card h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.guide-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.guide-list li + li {
+  margin-top: 0.75rem;
+}
+
+.guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.secondary-button {
+  display: inline-block;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(107, 16, 37, 0.16);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(107, 16, 37, 0.28);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 840px) {
+  .nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 860px) {
+  .guide-hero {
+    grid-template-columns: 1.05fr 1.2fr;
+  }
+
+  .guide-content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-section-card--wide {
+    grid-column: span 2;
+  }
+}
+
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+.preview-grid {
+  margin-top: 2rem;
+}
+
+.preview-card {
+  min-height: 100%;
+}
+
+.library-actions {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.library-note {
+  margin: 0;
+  color: var(--muted);
+  max-width: 640px;
+}
+
+.pathway-section {
+  background: linear-gradient(180deg, #fff7f9 0%, #ffffff 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-heading--narrow {
+  max-width: 760px;
+}
+
+.section-heading--library-hero {
+  margin-bottom: 2rem;
+}
+
+.pathway-grid,
+.episode-grid,
+.resource-panel-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.pathway-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.pathway-card,
+.episode-card,
+.resource-item {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.pathway-card {
+  padding: 1.5rem;
+}
+
+.pathway-card h3,
+.episode-card h3,
+.resource-panel h3 {
+  margin: 0 0 0.65rem;
+}
+
+.pathway-card p,
+.episode-card p,
+.resource-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.controls--page {
+  margin-bottom: 2rem;
+}
+
+.library-page .guide-main {
+  padding-top: 2.5rem;
+}
+
+.episode-section,
+.resource-section {
+  margin-top: 3.25rem;
+}
+
+.episode-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1.5rem;
+}
+
+.episode-card {
+  padding: 1.5rem;
+}
+
+.episode-number,
+.resource-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.episode-resource-tags {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.episode-resource-tags li {
+  border-radius: 999px;
+  background: #f7e8ed;
+  color: var(--primary);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.resource-panel-list {
+  margin-top: 1.5rem;
+}
+
+.resource-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.resource-item {
+  padding: 1.15rem;
+}
