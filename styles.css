@@ -1028,6 +1028,15 @@ body.modal-open {
 .guide-actions--hero {
   align-items: center;
 }
+.guide-action-highlight {
+  box-shadow: 0 14px 32px rgba(107, 16, 37, 0.22);
+}
+
+.guide-action-highlight:hover,
+.guide-action-highlight:focus-visible {
+  box-shadow: 0 18px 38px rgba(107, 16, 37, 0.28);
+}
+
 
 .video-button {
   display: inline-flex;
@@ -1079,6 +1088,16 @@ body.modal-open {
   transform: translateY(-4px);
   box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
 }
+.quick-link-card--highlight {
+  border-color: rgba(107, 16, 37, 0.28);
+  background: linear-gradient(180deg, rgba(255, 240, 244, 0.98), rgba(255, 255, 255, 0.98));
+  box-shadow: 0 18px 38px rgba(107, 16, 37, 0.14);
+}
+
+.quick-link-card--highlight strong {
+  color: var(--primary);
+}
+
 
 .quick-link-card__eyebrow {
   color: var(--primary);
