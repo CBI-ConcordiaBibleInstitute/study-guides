@@ -1,0 +1,36 @@
+name: Deploy site
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+concurrency: pages-${{ github.ref_name }}
+
+jobs:
+  deploy:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Stage static site
+        run: |
+          mkdir -p .deploy/site
+          rsync -av --delete \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.deploy' \
+            --exclude 'README.md' \
+            ./ .deploy/site/
+
+      - name: Deploy static site to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: .deploy/site
+          clean-exclude: pr-preview
+          force: false
