@@ -51,7 +51,7 @@ const studyGuides = guideDefinitions.map((guide) => ({
 }));
 
 let activeCategory = 'all';
-let isExpanded = false;
+let isExpanded = document.body.classList.contains('guides-index');
 
 window.addEventListener('DOMContentLoaded', () => {
   if (pageLoader && siteContent) {
