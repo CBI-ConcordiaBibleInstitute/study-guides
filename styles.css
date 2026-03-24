@@ -121,11 +121,38 @@ body.is-ready .page-loader { opacity: 0; visibility: hidden; pointer-events: non
   inset: 6% -14% auto;
   height: 74vh;
   background:
-    radial-gradient(circle at 15% 20%, rgba(111, 29, 59, 0.23), transparent 44%),
-    radial-gradient(circle at 82% 52%, rgba(48, 77, 149, 0.23), transparent 40%),
-    linear-gradient(140deg, #0e1a35 0%, #1a2c5a 56%, #243a74 100%);
+    radial-gradient(circle at 15% 20%, rgba(255, 170, 207, 0.36), transparent 44%),
+    radial-gradient(circle at 82% 52%, rgba(176, 145, 255, 0.32), transparent 40%),
+    linear-gradient(140deg, #3e1b53 0%, #672f75 52%, #8d3a76 100%);
   border-radius: 48px;
   transform: translateY(var(--hero-shift, 0));
+  animation: hero-glow 12s ease-in-out infinite alternate;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero-orb--one {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(255, 212, 230, 0.8), rgba(255, 212, 230, 0));
+  top: 12%;
+  left: 12%;
+  animation: float-orb 9s ease-in-out infinite;
+}
+
+.hero-orb--two {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(200, 186, 255, 0.72), rgba(200, 186, 255, 0));
+  bottom: 10%;
+  right: 12%;
+  animation: float-orb 11s ease-in-out infinite reverse;
 }
 .hero-content { position: relative; z-index: 1; max-width: 930px; color: #f3f7ff; }
 .eyebrow {
@@ -194,6 +221,7 @@ h1 { font-size: clamp(2.1rem, 5vw, 4.3rem); line-height: 1.08; margin: 0; letter
   font-weight: 800;
   color: var(--primary);
   line-height: 1;
+  animation: number-pop 2.6s ease-in-out infinite;
 }
 
 .metric-card h3 {
@@ -245,6 +273,13 @@ h1 { font-size: clamp(2.1rem, 5vw, 4.3rem); line-height: 1.08; margin: 0; letter
   background: #fff;
   border: 1px solid #d9e2f1;
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.orbit-item:hover,
+.orbit-item:focus-visible {
+  transform: scale(1.08);
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.2);
 }
 
 .orbit-item--one { top: 5%; left: 42%; }
@@ -471,6 +506,18 @@ h1 { font-size: clamp(2.1rem, 5vw, 4.3rem); line-height: 1.08; margin: 0; letter
   0% { opacity: 0; transform: translate(-50%, 0); }
   30% { opacity: 1; }
   100% { opacity: 0; transform: translate(-50%, 14px); }
+}
+@keyframes hero-glow {
+  0% { filter: saturate(0.95) brightness(0.95); }
+  100% { filter: saturate(1.18) brightness(1.05); }
+}
+@keyframes float-orb {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-16px) translateX(10px); }
+}
+@keyframes number-pop {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.04); }
 }
 @keyframes spin-loader { to { transform: rotate(360deg); } }
 @keyframes loader-pulse {
