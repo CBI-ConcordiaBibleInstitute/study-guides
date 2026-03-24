@@ -1486,3 +1486,177 @@ body:not(.guide-page) .more-button:focus-visible {
 body:not(.guide-page) .hero-content {
   animation: drift 7s ease-in-out infinite;
 }
+
+/* ===== Whole-site premium motion theme (content unchanged) ===== */
+:root {
+  --lux-navy: #050b1c;
+  --lux-navy-soft: #0e2240;
+  --lux-maroon: #6f1027;
+  --lux-maroon-soft: #8b243a;
+  --lux-gold: #b88a44;
+  --lux-gold-soft: #f0d39a;
+}
+
+body {
+  background: var(--lux-navy);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.65,.2,1);
+}
+
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section,
+.guide-main {
+  position: relative;
+}
+
+.section::after,
+.guide-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 20% 0%, rgba(184, 138, 68, 0.06), transparent 35%);
+}
+
+/* Guide page skin to match homepage style */
+.guide-page {
+  background:
+    radial-gradient(circle at 14% 8%, rgba(111, 16, 39, 0.4), transparent 32%),
+    radial-gradient(circle at 82% 18%, rgba(15, 39, 71, 0.55), transparent 35%),
+    #040a19;
+  color: #e8eef9;
+}
+
+.guide-page .site-header {
+  background: rgba(4, 10, 25, 0.78);
+  border-bottom: 1px solid rgba(184, 138, 68, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.guide-page .brand-text,
+.guide-page .nav-links a {
+  color: #f8e4bf;
+}
+
+.guide-page .nav-links a {
+  border-color: rgba(184, 138, 68, 0.26);
+  background: rgba(111, 16, 39, 0.35);
+}
+
+.guide-page .guide-main {
+  padding-block: 3rem 5rem;
+}
+
+.guide-page .guide-hero-card,
+.guide-page .guide-section-card,
+.guide-page .quick-link-card,
+.guide-page .guide-library-cta {
+  border: 1px solid rgba(184, 138, 68, 0.24);
+  background: linear-gradient(165deg, rgba(10, 22, 46, 0.88), rgba(49, 11, 23, 0.52));
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.34);
+  color: #e5ebf8;
+}
+
+.guide-page .guide-hero-copy h1,
+.guide-page .guide-section-card h2,
+.guide-page .quick-link-card strong,
+.guide-page .guide-library-cta h2 {
+  color: #fff4e1;
+}
+
+.guide-page .guide-hero-copy p,
+.guide-page .guide-section-card p,
+.guide-page .quick-link-card span:last-child,
+.guide-page .guide-inline-note,
+.guide-page .guide-library-cta p {
+  color: #d2dced;
+}
+
+.guide-page .eyebrow,
+.guide-page .quick-link-card__eyebrow {
+  color: #f0d39a;
+}
+
+.guide-page .guide-hero-art__badge,
+.guide-page .episode-overview-card__label {
+  border: 1px solid rgba(240, 211, 154, 0.5);
+  background: rgba(184, 138, 68, 0.18);
+  color: #f8e1b5;
+}
+
+.guide-page .guide-checklist > div,
+.guide-page .episode-overview-card,
+.guide-page .study-grid article {
+  border: 1px solid rgba(184, 138, 68, 0.2);
+  background: rgba(11, 25, 50, 0.7);
+}
+
+.guide-page .video-button,
+.guide-page .cta-button,
+.guide-page .embedded-video-preview__cta {
+  border: 1px solid rgba(243, 214, 156, 0.66);
+  background: linear-gradient(118deg, var(--lux-maroon), var(--lux-maroon-soft) 55%, var(--lux-gold));
+  color: #fff3dd;
+}
+
+.guide-page .video-button:hover,
+.guide-page .cta-button:hover,
+.guide-page .quick-link-card:hover,
+.guide-page .guide-section-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.4);
+}
+
+.guide-page .embedded-video-shell {
+  border: 1px solid rgba(184, 138, 68, 0.28);
+  border-radius: 22px;
+  background: linear-gradient(170deg, rgba(15, 39, 71, 0.8), rgba(8, 18, 38, 0.92));
+}
+
+.guide-page .embedded-video-preview {
+  border: 0;
+  background: transparent;
+}
+
+.guide-page .embedded-video-preview__badge {
+  background: rgba(184, 138, 68, 0.15);
+  border: 1px solid rgba(243, 214, 156, 0.44);
+  color: #f4d9a9;
+}
+
+.guide-page .site-footer {
+  border-top: 1px solid rgba(184, 138, 68, 0.22);
+  background: linear-gradient(180deg, rgba(5, 11, 28, 0.98), rgba(8, 17, 35, 0.98));
+}
+
+.guide-page .footer-links a,
+.guide-page .social-links a,
+.guide-page .site-footer p {
+  color: #ced9ee;
+}
+
+.guide-page .footer-links a:hover,
+.guide-page .social-links a:hover {
+  color: #f0d39a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .hero-content,
+  .guide-page .guide-section-card,
+  .guide-page .quick-link-card,
+  .guide-page .video-button,
+  body:not(.guide-page) .guide-card {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
