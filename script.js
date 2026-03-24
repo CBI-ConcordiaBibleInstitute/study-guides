@@ -10,7 +10,6 @@ const yearNode = document.getElementById('year');
 const moreGuidesButton = document.getElementById('moreGuidesButton');
 const guideSummaryHeading = document.getElementById('guideSummaryHeading');
 const guideSummaryText = document.getElementById('guideSummaryText');
-const guideCountValue = document.getElementById('guideCountValue');
 
 const FEATURED_LIMIT = 6;
 
@@ -82,7 +81,7 @@ const animateObserver = new IntersectionObserver(
 const normalize = (value) => value.toLowerCase().trim();
 
 function observeFadeUps() {
-  document.querySelectorAll('.fade-up').forEach((el) => {
+  document.querySelectorAll('.fade-up, .reveal').forEach((el) => {
     if (!el.classList.contains('in-view')) {
       animateObserver.observe(el);
     }
@@ -243,7 +242,3 @@ document.querySelectorAll('[data-youtube-embed]').forEach((button) => {
 
 observeFadeUps();
 renderGuides();
-
-if (guideCountValue) {
-  guideCountValue.textContent = String(studyGuides.length);
-}

@@ -40,43 +40,61 @@
     <main>
       <section class="hero" id="hero">
         <div class="hero-bg-shape" aria-hidden="true"></div>
-        <div class="container hero-content fade-up">
+        <div class="container hero-content reveal reveal-up">
           <p class="eyebrow">Concordia Bible Institute</p>
-          <h1>Study Guides designed for deeper, structured biblical learning.</h1>
+          <h1>Concordia Bible Institute Study Guides</h1>
           <p class="subtitle">A modern, organized library of Christ-centered courses and episode guides. Search by testament, discover curated pathways, and open any guide instantly.</p>
-          <div class="hero-actions">
-            <a class="cta-button" href="#study-guides">Browse Study Guides</a>
-            <a class="secondary-button hero-secondary" href="guides/genesis.html">Start with Genesis</a>
-          </div>
-          <div class="hero-stats" role="list" aria-label="Study library highlights">
-            <div class="hero-stat" role="listitem">
-              <span class="hero-stat__label">Available Guides</span>
-              <strong class="hero-stat__value" id="guideCountValue">26</strong>
-            </div>
-            <div class="hero-stat" role="listitem">
-              <span class="hero-stat__label">Learning Tracks</span>
-              <strong class="hero-stat__value">4</strong>
-            </div>
-            <div class="hero-stat" role="listitem">
-              <span class="hero-stat__label">Format</span>
-              <strong class="hero-stat__value">Podcast + Notes</strong>
-            </div>
-          </div>
         </div>
         <a class="scroll-indicator" href="#study-guides" aria-label="Scroll to study guides">
           <span></span>
         </a>
       </section>
 
+      <section class="metrics section">
+        <div class="container">
+          <div class="metrics-grid">
+            <article class="metric-card reveal reveal-left">
+              <p>40+</p>
+              <h3>Bible Podcasts</h3>
+            </article>
+            <article class="metric-card reveal reveal-right">
+              <p>300+</p>
+              <h3>Episodes</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="ecosystem section">
+        <div class="container ecosystem-wrap">
+          <div class="section-heading reveal reveal-up">
+            <p class="eyebrow">Featured Episodes</p>
+            <h2>Explore key study pathways</h2>
+            <p>Discover important episodes in a focused ecosystem layout, then jump straight into the complete study guide library.</p>
+          </div>
+          <div class="ecosystem-orbit reveal reveal-zoom" aria-label="Important study guide episodes">
+            <a class="orbit-item orbit-item--one" href="guides/genesis.html">Genesis</a>
+            <a class="orbit-item orbit-item--two" href="guides/romans.html">Romans</a>
+            <a class="orbit-item orbit-item--three" href="guides/psalms.html">Psalms</a>
+            <a class="orbit-item orbit-item--four" href="guides/john.html">John</a>
+            <a class="orbit-item orbit-item--five" href="guides/revelation.html">Revelation</a>
+            <span class="orbit-core">CBI</span>
+          </div>
+          <div class="ecosystem-action reveal reveal-up">
+            <a class="cta-button" href="#study-guides">Study Guides</a>
+          </div>
+        </div>
+      </section>
+
       <section class="library section" id="study-guides">
         <div class="container">
-          <div class="section-heading fade-up">
+          <div class="section-heading reveal reveal-up">
             <p class="eyebrow">Library</p>
             <h2>Professional Study Guide Dashboard</h2>
             <p>Use filters, search, and expandable results to quickly find the right lesson series for your next study session.</p>
           </div>
 
-          <div class="controls fade-up">
+          <div class="controls reveal reveal-left">
             <label class="search-wrap" for="guideSearch">
               <span class="sr-only">Search guides</span>
               <input id="guideSearch" type="search" placeholder="Search by guide, topic, or learning track..." autocomplete="off" />
@@ -89,7 +107,7 @@
             </div>
           </div>
 
-          <div class="library-summary fade-up">
+          <div class="library-summary reveal reveal-right">
             <div>
               <p class="summary-label">Current View</p>
               <h3 id="guideSummaryHeading">Showing featured study guides</h3>
