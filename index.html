@@ -27,7 +27,7 @@
       <div class="container nav-wrap">
         <a class="logo header-brand" href="index.html" aria-label="Bible Study Guide Library home">
           <img src="images/concordia-logo.svg" alt="Concordia Bible Institute logo" class="header-logo" />
-          <span class="brand-text">CBI-StudyGuideLibrary</span>
+          <span class="brand-text">CBI StudyGuide Library</span>
         </a>
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -42,9 +42,26 @@
         <div class="hero-bg-shape" aria-hidden="true"></div>
         <div class="container hero-content fade-up">
           <p class="eyebrow">Concordia Bible Institute</p>
-          <h1>Concordia Bible Institute STUDY GUIDES</h1>
-          <p class="subtitle">The Concordia Bible Institute (CBI) exists to provide Christ-centered Bible instruction from distinguished experts who teach “Christ in Every Word” of the Old and New Testaments, to strengthen faith and spread belief in the one true God.</p>
-          <a class="cta-button" href="#study-guides">Browse Guides</a>
+          <h1>Study Guides designed for deeper, structured biblical learning.</h1>
+          <p class="subtitle">A modern, organized library of Christ-centered courses and episode guides. Search by testament, discover curated pathways, and open any guide instantly.</p>
+          <div class="hero-actions">
+            <a class="cta-button" href="#study-guides">Browse Study Guides</a>
+            <a class="secondary-button hero-secondary" href="guides/genesis.html">Start with Genesis</a>
+          </div>
+          <div class="hero-stats" role="list" aria-label="Study library highlights">
+            <div class="hero-stat" role="listitem">
+              <span class="hero-stat__label">Available Guides</span>
+              <strong class="hero-stat__value" id="guideCountValue">26</strong>
+            </div>
+            <div class="hero-stat" role="listitem">
+              <span class="hero-stat__label">Learning Tracks</span>
+              <strong class="hero-stat__value">4</strong>
+            </div>
+            <div class="hero-stat" role="listitem">
+              <span class="hero-stat__label">Format</span>
+              <strong class="hero-stat__value">Podcast + Notes</strong>
+            </div>
+          </div>
         </div>
         <a class="scroll-indicator" href="#study-guides" aria-label="Scroll to study guides">
           <span></span>
@@ -55,26 +72,26 @@
         <div class="container">
           <div class="section-heading fade-up">
             <p class="eyebrow">Library</p>
-            <h2>Study Guides</h2>
+            <h2>Professional Study Guide Dashboard</h2>
+            <p>Use filters, search, and expandable results to quickly find the right lesson series for your next study session.</p>
           </div>
 
           <div class="controls fade-up">
             <label class="search-wrap" for="guideSearch">
               <span class="sr-only">Search guides</span>
-              <input id="guideSearch" type="search" placeholder="Search by guide title or episode topic..." autocomplete="off" />
+              <input id="guideSearch" type="search" placeholder="Search by guide, topic, or learning track..." autocomplete="off" />
             </label>
 
             <div class="category-filters" role="group" aria-label="Guide category filters">
-              <button class="filter-btn active" data-category="all">All</button>
+              <button class="filter-btn active" data-category="all">All Guides</button>
               <button class="filter-btn" data-category="old-testament">Old Testament</button>
               <button class="filter-btn" data-category="new-testament">New Testament</button>
-            
             </div>
           </div>
 
           <div class="library-summary fade-up">
             <div>
-              <p class="summary-label">Featured now</p>
+              <p class="summary-label">Current View</p>
               <h3 id="guideSummaryHeading">Showing featured study guides</h3>
               <p id="guideSummaryText">Click any card to open its full study guide page directly.</p>
             </div>
@@ -82,10 +99,8 @@
           </div>
 
           <div class="guide-grid" id="guideGrid" aria-live="polite"></div>
-
         </div>
       </section>
-
     </main>
   </div>
 

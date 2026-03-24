@@ -10,6 +10,7 @@ const yearNode = document.getElementById('year');
 const moreGuidesButton = document.getElementById('moreGuidesButton');
 const guideSummaryHeading = document.getElementById('guideSummaryHeading');
 const guideSummaryText = document.getElementById('guideSummaryText');
+const guideCountValue = document.getElementById('guideCountValue');
 
 const FEATURED_LIMIT = 6;
 
@@ -45,7 +46,9 @@ const guideDefinitions = [
 const studyGuides = guideDefinitions.map((guide) => ({
   ...guide,
   searchIndex: [guide.title, guide.description, ...guide.categories].join(' ').toLowerCase(),
-  episodeCount: guide.slug === 'genesis' ? 4 : 3
+  episodeCount: guide.slug === 'genesis' ? 4 : 3,
+  level: guide.categories.includes('new-testament') ? 'Intermediate' : 'Foundational',
+  duration: guide.slug === 'genesis' || guide.slug === 'romans' ? '6-Week Path' : '4-Week Path'
 }));
 
 let activeCategory = 'all';
@@ -103,6 +106,10 @@ function createGuideMarkup(guide) {
             <span class="episode-count">${guide.episodeCount} Sections</span>
           </div>
           <p>${guide.description}</p>
+          <div class="card-meta">
+            <span>${guide.level}</span>
+            <span>${guide.duration}</span>
+          </div>
           <ul class="card-tags">${createCategoryBadges(guide.categories)}</ul>
           <span class="guide-card__link">Open full guide page</span>
         </div>
@@ -236,3 +243,7 @@ document.querySelectorAll('[data-youtube-embed]').forEach((button) => {
 
 observeFadeUps();
 renderGuides();
+
+if (guideCountValue) {
+  guideCountValue.textContent = String(studyGuides.length);
+}
