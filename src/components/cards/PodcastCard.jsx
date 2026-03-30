@@ -8,7 +8,7 @@ export default function PodcastCard({ podcast }) {
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
       className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)]"
     >
-      <img src={podcast.cover} alt={podcast.title} className="h-44 w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
+      <img src={podcast.cover} alt={podcast.title} loading="lazy" decoding="async" className="h-44 w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       <div className="relative space-y-3 p-5">
         <div className="flex items-center justify-between">

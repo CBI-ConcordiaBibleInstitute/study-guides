@@ -1,17 +1,22 @@
 import { AnimatePresence } from 'framer-motion';
+import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import PageTransition from '../components/animations/PageTransition';
+import PageSkeleton from '../components/feedback/PageSkeleton';
 import MainLayout from '../layouts/MainLayout';
-import EpisodeListPage from '../pages/EpisodeListPage';
-import Home from '../pages/Home';
-import StudyGuidePage from '../pages/StudyGuidePage';
+
+const Home = lazy(() => import('../pages/Home'));
+const EpisodeListPage = lazy(() => import('../pages/EpisodeListPage'));
+const StudyGuidePage = lazy(() => import('../pages/StudyGuidePage'));
 
 export default function App() {
   const location = useLocation();
 
   const withTransition = (Component) => (
     <PageTransition>
-      <Component />
+      <Suspense fallback={<PageSkeleton />}>
+        <Component />
+      </Suspense>
     </PageTransition>
   );
 

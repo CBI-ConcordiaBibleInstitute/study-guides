@@ -72,3 +72,16 @@ src/
 - `/` → podcast discovery
 - `/podcast/:podcastId` → all episodes for selected podcast
 - `/podcast/:podcastId/episode/:episodeId/study-guides` → study guides for selected episode
+
+
+## Styling Examples
+
+### Primary Button
+```jsx
+<Button className="bg-gradient-to-r from-[var(--primary)] to-[var(--brand)]">Explore Guides</Button>
+```
+
+### Podcast Card Surface
+```jsx
+<article className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)]" />
+```
