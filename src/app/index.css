@@ -69,7 +69,7 @@ body {
   }
 
   .saas-panel {
-    @apply rounded-3xl border border-[var(--border)] bg-[var(--surface)]/95 shadow-[var(--shadow-card)] backdrop-blur;
+    @apply rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)] backdrop-blur;
   }
 
   .saas-link {
