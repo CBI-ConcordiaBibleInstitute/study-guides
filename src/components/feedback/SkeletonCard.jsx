@@ -6,7 +6,7 @@ export default function SkeletonCard({ className = '' }) {
       initial={{ opacity: 0.45 }}
       animate={{ opacity: 1 }}
       transition={{ repeat: Infinity, repeatType: 'reverse', duration: 0.9 }}
-      className={`rounded-2xl border border-white/10 bg-card-elevated ${className}`}
+      className={`rounded-2xl border border-[var(--border)] bg-[var(--surface-elevated)] ${className}`}
     />
   );
 }

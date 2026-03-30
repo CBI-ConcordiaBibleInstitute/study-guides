@@ -18,15 +18,15 @@ export default function Home() {
   return (
     <section className="space-y-14">
       <FadeInView>
-        <header className="relative overflow-hidden rounded-3xl border border-white/10 bg-card p-8 shadow-card sm:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(137,35,52,0.2),transparent_55%)]" />
+        <header className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8 shadow-[var(--shadow-card)] sm:p-10">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(125deg,var(--accent-soft),transparent_55%)]" />
           <div className="relative space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-300">Faith + Learning Platform</p>
-            <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-text-primary sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--secondary)]">Faith + Learning Platform</p>
+            <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-[var(--text-primary)] sm:text-5xl">
               Grow in Scripture with podcast-style study guides built for modern discipleship.
             </h1>
-            <p className="max-w-2xl text-text-secondary">
-              Explore curated episodes, open guided notes, and unlock premium learning paths in a clean academic experience inspired by concordiabible.org.
+            <p className="max-w-2xl text-[var(--text-secondary)]">
+              Discover episodes, open guides, and build a consistent learning rhythm with a clean, modern study experience.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button>Get Started</Button>

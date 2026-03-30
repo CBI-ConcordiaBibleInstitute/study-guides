@@ -13,13 +13,13 @@ export default function EpisodeListPage() {
   const isLoading = useMockLoading();
 
   if (!podcast) {
-    return <p className="text-text-secondary">Podcast not found.</p>;
+    return <p className="text-[var(--text-secondary)]">Podcast not found.</p>;
   }
 
   return (
     <FadeInView>
       <section className="space-y-8">
-        <Link to={`/podcast/${podcast.id}`} className="text-sm font-semibold text-accent-300 hover:text-accent-400">
+        <Link to={`/podcast/${podcast.id}`} className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)]">
           ← Back to podcast
         </Link>
         <SectionHeader eyebrow="Episode Library" title={`${podcast.title} Episodes`} subtitle="Choose an episode to open its study guide stack." />
