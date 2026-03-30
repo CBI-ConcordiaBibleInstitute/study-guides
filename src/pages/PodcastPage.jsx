@@ -9,32 +9,32 @@ export default function PodcastPage() {
   const podcast = getPodcastById(podcastId);
 
   if (!podcast) {
-    return <p className="text-slate-300">Podcast not found.</p>;
+    return <p className="text-text-secondary">Podcast not found.</p>;
   }
 
   return (
     <FadeInView>
       <section className="space-y-8">
-        <Link to="/" className="text-sm font-semibold text-brand-400 hover:text-brand-300">
+        <Link to="/" className="text-sm font-semibold text-accent-300 hover:text-accent-400">
           ← Back to home
         </Link>
 
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid gap-8 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/40 lg:grid-cols-[320px_1fr]"
+          className="grid gap-8 rounded-3xl border border-white/10 bg-card p-6 shadow-card lg:grid-cols-[320px_1fr]"
         >
           <img src={podcast.cover} alt={podcast.title} className="h-72 w-full rounded-2xl object-cover" />
           <div className="space-y-4 self-center">
-            <span className="inline-flex rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold text-brand-300">{podcast.badge}</span>
-            <h1 className="text-4xl font-semibold text-white">{podcast.title}</h1>
-            <p className="text-sm uppercase tracking-[0.18em] text-slate-400">Hosted by {podcast.host}</p>
-            <p className="max-w-2xl text-slate-300">{podcast.summary}</p>
+            <span className="inline-flex rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold text-brand-200">{podcast.badge}</span>
+            <h1 className="text-4xl font-semibold text-text-primary">{podcast.title}</h1>
+            <p className="text-sm uppercase tracking-[0.18em] text-text-secondary">Hosted by {podcast.host}</p>
+            <p className="max-w-2xl text-text-secondary">{podcast.summary}</p>
             <div className="flex items-center gap-3">
               <Link to={`/podcast/${podcast.id}/episodes`}>
                 <Button>Browse Episodes</Button>
               </Link>
-              <span className="text-sm text-slate-400">{podcast.followers} followers</span>
+              <span className="text-sm text-text-secondary">{podcast.followers} followers</span>
             </div>
           </div>
         </motion.section>

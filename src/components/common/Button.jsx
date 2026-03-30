@@ -6,19 +6,14 @@ export default function Button({ children, variant = 'primary', className = '', 
 
   const styles = {
     primary:
-      'bg-brand-500 text-white hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-glow focus-visible:ring-brand-500/60',
+      'bg-accent-400 text-bg hover:-translate-y-0.5 hover:bg-accent-300 hover:shadow-glow focus-visible:ring-accent-300/60',
     ghost:
-      'border border-white/15 bg-white/5 text-slate-100 hover:-translate-y-0.5 hover:bg-white/10 focus-visible:ring-white/30'
+      'border border-white/15 bg-white/5 text-text-primary hover:-translate-y-0.5 hover:bg-white/10 focus-visible:ring-white/30'
   };
 
   const handleClick = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
-    const ripple = {
-      id: Date.now(),
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
-    };
-
+    const ripple = { id: Date.now(), x: event.clientX - rect.left, y: event.clientY - rect.top };
     setRipples((prev) => [...prev, ripple]);
     setTimeout(() => setRipples((prev) => prev.filter((item) => item.id !== ripple.id)), 450);
     onClick?.(event);
@@ -37,7 +32,7 @@ export default function Button({ children, variant = 'primary', className = '', 
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="pointer-events-none absolute h-24 w-24 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-white/25"
+          className="pointer-events-none absolute h-24 w-24 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-white/30"
           style={{ left: ripple.x, top: ripple.y }}
         />
       ))}
