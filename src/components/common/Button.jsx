@@ -6,7 +6,7 @@ export default function Button({ children, variant = 'primary', className = '', 
 
   const styles = {
     primary:
-      'bg-[var(--primary)] text-white hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] shadow-md hover:shadow-lg focus-visible:ring-[var(--primary)]/50',
+      'bg-gradient-to-r from-[var(--primary)] to-[var(--brand)] text-white hover:-translate-y-0.5 hover:shadow-lg focus-visible:ring-[var(--primary)]/50',
     ghost:
       'border border-[var(--border)] bg-[var(--surface)] text-[var(--text-primary)] hover:-translate-y-0.5 hover:bg-[var(--surface-elevated)] focus-visible:ring-[var(--primary)]/30'
   };

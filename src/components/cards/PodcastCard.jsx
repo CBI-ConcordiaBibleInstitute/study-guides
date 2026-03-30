@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function PodcastCard({ podcast }) {
   return (
     <motion.article
-      whileHover={{ y: -6, scale: 1.01 }}
+      whileHover={{ y: -8, scale: 1.015 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
       className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)]"
     >
@@ -17,7 +17,7 @@ export default function PodcastCard({ podcast }) {
         </div>
         <h3 className="text-xl font-semibold leading-tight text-[var(--text-primary)]">{podcast.title}</h3>
         <p className="line-clamp-2 text-sm text-[var(--text-secondary)]">{podcast.summary}</p>
-        <Link to={`/podcast/${podcast.id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)] transition group-hover:gap-3">
+        <Link to={`/podcast/${podcast.id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)] transition group-hover:gap-3 hover:text-[var(--brand)]">
           Explore podcast <span aria-hidden>→</span>
         </Link>
       </div>
