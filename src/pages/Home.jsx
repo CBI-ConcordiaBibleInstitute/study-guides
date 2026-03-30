@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <section className="space-y-14">
       <FadeInView>
-        <header className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8 shadow-[var(--shadow-card)] sm:p-10">
+        <header className="saas-panel relative overflow-hidden p-8 sm:p-10">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(125deg,var(--accent-soft),transparent_55%)]" />
           <div className="relative space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--secondary)]">Faith + Learning Platform</p>

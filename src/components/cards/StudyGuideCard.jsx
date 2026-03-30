@@ -8,7 +8,7 @@ export default function StudyGuideCard({ guide, isPreview, onOpen, onLockedClick
   return (
     <motion.article
       whileHover={{ y: -2, scale: 1.01 }}
-      className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)]"
+      className="saas-card relative overflow-hidden p-4"
     >
       <div className={`flex items-center justify-between gap-4 pr-1 transition ${isLocked ? 'blur-[1.8px]' : ''}`}>
         <div>

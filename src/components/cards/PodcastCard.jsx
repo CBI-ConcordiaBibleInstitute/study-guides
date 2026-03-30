@@ -6,7 +6,7 @@ export default function PodcastCard({ podcast }) {
     <motion.article
       whileHover={{ y: -8, scale: 1.015 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-      className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)]"
+      className="saas-card group relative overflow-hidden"
     >
       <img src={podcast.cover} alt={podcast.title} loading="lazy" decoding="async" className="h-44 w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />

@@ -46,3 +46,33 @@ body {
   color: var(--text-primary);
   transition: background-color 300ms ease, color 300ms ease;
 }
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .saas-card {
+    @apply rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)] transition duration-300;
+  }
+
+  .saas-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .saas-panel {
+    @apply rounded-3xl border border-[var(--border)] bg-[var(--surface)]/95 shadow-[var(--shadow-card)] backdrop-blur;
+  }
+
+  .saas-link {
+    @apply text-[var(--primary)] transition hover:text-[var(--primary-hover)];
+  }
+}

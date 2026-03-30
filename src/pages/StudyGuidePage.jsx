@@ -20,10 +20,10 @@ export default function StudyGuidePage() {
   return (
     <FadeInView>
       <section className="space-y-8">
-        <Link to={`/podcast/${podcast.id}`} className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)]">
+        <Link to={`/podcast/${podcast.id}`} className="saas-link text-sm font-semibold">
           ← Back to episodes
         </Link>
-        <header className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-card)]">
+        <header className="saas-panel p-6">
           <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-secondary)]">{podcast.title}</p>
           <h1 className="mt-2 text-3xl font-semibold text-[var(--text-primary)]">{episode.title}</h1>
           <p className="mt-3 text-[var(--text-secondary)]">{episode.description}</p>

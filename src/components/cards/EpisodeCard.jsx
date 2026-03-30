@@ -6,7 +6,7 @@ export default function EpisodeCard({ episode, podcastId, episodeNumber }) {
     <motion.article
       whileHover={{ y: -2 }}
       transition={{ type: 'spring', stiffness: 280, damping: 20 }}
-      className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)]"
+      className="saas-card p-5"
     >
       <div className="mb-3 flex items-start justify-between gap-4">
         <div>

@@ -27,7 +27,7 @@ export default function EpisodeListPage() {
         <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
           <Sidebar podcastId={podcast.id} podcastTitle={podcast.title} episodeCount={podcast.episodes.length} />
           <div className="space-y-4">
-            <Link to="/" className="inline-flex text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)]">
+            <Link to="/" className="saas-link inline-flex text-sm font-semibold">
               ← Back to podcasts
             </Link>
             {isLoading ? (
