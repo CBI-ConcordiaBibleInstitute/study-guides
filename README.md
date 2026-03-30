@@ -48,3 +48,7 @@ Locked guides include:
 npm install
 npm run dev
 ```
+
+## Deployment Notes
+- Uses `HashRouter` so deep links work on static hosts (GitHub Pages / PR previews).
+- Vite `base` is set to `/study-guides/` only when `GITHUB_ACTIONS=true`, preventing broken asset paths in production deploys.
