@@ -1,5 +1,6 @@
+import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-import EpisodeCard from '../components/cards/EpisodeCard';
+import Button from '../components/common/Button';
 import { getPodcastById } from '../data/content';
 
 export default function PodcastPage() {
@@ -12,18 +13,29 @@ export default function PodcastPage() {
 
   return (
     <section className="space-y-8">
-      <Link to="/" className="text-sm font-semibold text-brand-500 hover:text-brand-600">
-        ← Back to all podcasts
+      <Link to="/" className="text-sm font-semibold text-brand-400 hover:text-brand-300">
+        ← Back to home
       </Link>
-      <header className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
-        <h1 className="text-3xl font-bold text-white">{podcast.title}</h1>
-        <p className="mt-3 max-w-3xl text-slate-300">{podcast.summary}</p>
-      </header>
-      <div className="grid gap-4 md:grid-cols-2">
-        {podcast.episodes.map((episode) => (
-          <EpisodeCard key={episode.id} episode={episode} podcastId={podcast.id} />
-        ))}
-      </div>
+
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="grid gap-8 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-black/40 lg:grid-cols-[320px_1fr]"
+      >
+        <img src={podcast.cover} alt={podcast.title} className="h-72 w-full rounded-2xl object-cover" />
+        <div className="space-y-4 self-center">
+          <span className="inline-flex rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold text-brand-300">{podcast.badge}</span>
+          <h1 className="text-4xl font-semibold text-white">{podcast.title}</h1>
+          <p className="text-sm uppercase tracking-[0.18em] text-slate-400">Hosted by {podcast.host}</p>
+          <p className="max-w-2xl text-slate-300">{podcast.summary}</p>
+          <div className="flex items-center gap-3">
+            <Link to={`/podcast/${podcast.id}/episodes`}>
+              <Button>Browse Episodes</Button>
+            </Link>
+            <span className="text-sm text-slate-400">{podcast.followers} followers</span>
+          </div>
+        </div>
+      </motion.section>
     </section>
   );
 }

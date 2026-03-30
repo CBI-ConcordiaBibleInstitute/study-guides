@@ -3,18 +3,19 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      },
       colors: {
         brand: {
-          50: '#eef7ff',
-          500: '#3b82f6',
-          600: '#2563eb'
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7'
         }
       },
       boxShadow: {
-        glow: '0 10px 30px rgba(37, 99, 235, 0.25)'
-      },
-      backgroundImage: {
-        'hero-gradient': 'radial-gradient(circle at top, rgba(59,130,246,0.2), transparent 45%), linear-gradient(180deg, #020617 0%, #0f172a 100%)'
+        glow: '0 14px 30px rgba(14, 165, 233, 0.28)'
       }
     }
   },

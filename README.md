@@ -1,6 +1,6 @@
 # StudyCast Frontend (React + Tailwind)
 
-A modernized, component-driven study guide platform inspired by SaaS, podcast, and streaming UI patterns.
+A premium, streaming-inspired study guide platform with modern dark UI aesthetics.
 
 ## Tech Stack
 - React + functional components
@@ -29,37 +29,36 @@ study-guides/
    │  │  ├─ GuideCard.jsx
    │  │  └─ PodcastCard.jsx
    │  ├─ common/
-   │  │  └─ Button.jsx
+   │  │  ├─ Button.jsx
+   │  │  └─ SectionHeader.jsx
    │  └─ layout/
    │     ├─ Layout.jsx
    │     └─ Navbar.jsx
    ├─ data/
    │  └─ content.js
    ├─ pages/
-   │  ├─ EpisodePage.jsx
+   │  ├─ EpisodeListPage.jsx
    │  ├─ Home.jsx
-   │  └─ PodcastPage.jsx
+   │  ├─ PodcastPage.jsx
+   │  └─ StudyGuidePage.jsx
    └─ main.jsx
 ```
 
-## UX Notes
-- Mobile-first responsive layout.
-- Card grids that scale from 1 → 2 → 3 columns.
-- Netflix/Spotify-like browsing flow:
-  1. Home = podcasts
-  2. Podcast detail = episodes
-  3. Episode detail = guides with premium lock state
-- First guide is free; remaining guides can show premium lock CTA.
-- Smooth transitions, hover lift, subtle shadows, and gradient dark theme.
+## Page Flow
+1. **Homepage** → sectioned discovery rows (`Trending`, `Popular`, `New`).
+2. **Podcast Detail** → branded hero and show metadata.
+3. **Episode List** → card-based episode library.
+4. **Study Guide Page** → guide stack (first free, others premium-locked).
+
+## UI Principles
+- Dark theme + accent highlights.
+- Sticky translucent navbar with blur.
+- Rounded 2xl cards and soft glow shadows.
+- Motion-based hover interactions (lift, scale).
+- Mobile-first spacing and responsive grid hierarchy.
 
 ## Run
 ```bash
 npm install
 npm run dev
-```
-
-## Production
-```bash
-npm run build
-npm run preview
 ```
