@@ -77,6 +77,12 @@ Composable lock state overlay; used by `StudyGuideCard`.
 ```
 Shared app-wide footer for product messaging.
 
+
+## Premium Access Logic
+- `StudyGuideCard` receives `isPreview` (boolean) from page-level index checks.
+- First item uses `isPreview={true}` and remains accessible.
+- Remaining guides render with: blur preview, lock icon overlay, and an `Unlock` premium badge.
+
 ## Clean Coding Practices Applied
 - Components are single-purpose and prop-driven.
 - Shared UI patterns are extracted (`Button`, `SectionHeader`, `PremiumLockOverlay`).
