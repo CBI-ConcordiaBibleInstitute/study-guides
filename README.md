@@ -1,61 +1,88 @@
 # StudyCast Frontend (React + Tailwind)
 
-A premium, streaming-inspired study guide platform with modern dark UI aesthetics.
+A premium, streaming-inspired study guide platform with reusable React components.
 
-## Tech Stack
-- React + functional components
-- Vite
-- React Router
-- Tailwind CSS (utility-only styling, no plain CSS)
-- Framer Motion for micro-interactions
-
-## Project Structure
+## Component Structure
 
 ```text
-study-guides/
-├─ index.html
-├─ package.json
-├─ postcss.config.js
-├─ tailwind.config.js
-├─ vite.config.js
-├─ images/
-└─ src/
-   ├─ app/
-   │  ├─ App.jsx
-   │  └─ index.css
-   ├─ components/
-   │  ├─ cards/
-   │  │  ├─ EpisodeCard.jsx
-   │  │  ├─ GuideCard.jsx
-   │  │  └─ PodcastCard.jsx
-   │  ├─ common/
-   │  │  ├─ Button.jsx
-   │  │  └─ SectionHeader.jsx
-   │  └─ layout/
-   │     ├─ Layout.jsx
-   │     └─ Navbar.jsx
-   ├─ data/
-   │  └─ content.js
-   ├─ pages/
-   │  ├─ EpisodeListPage.jsx
-   │  ├─ Home.jsx
-   │  ├─ PodcastPage.jsx
-   │  └─ StudyGuidePage.jsx
-   └─ main.jsx
+src/
+├─ app/
+│  ├─ App.jsx
+│  └─ index.css
+├─ components/
+│  ├─ cards/
+│  │  ├─ PodcastCard.jsx
+│  │  ├─ EpisodeCard.jsx
+│  │  └─ StudyGuideCard.jsx
+│  ├─ common/
+│  │  ├─ Button.jsx
+│  │  └─ SectionHeader.jsx
+│  ├─ layout/
+│  │  ├─ Navbar.jsx
+│  │  ├─ Sidebar.jsx
+│  │  ├─ Footer.jsx
+│  │  └─ Layout.jsx
+│  └─ overlays/
+│     └─ PremiumLockOverlay.jsx
+├─ data/
+│  └─ content.js
+└─ pages/
+   ├─ Home.jsx
+   ├─ PodcastPage.jsx
+   ├─ EpisodeListPage.jsx
+   └─ StudyGuidePage.jsx
 ```
 
-## Page Flow
-1. **Homepage** → sectioned discovery rows (`Trending`, `Popular`, `New`).
-2. **Podcast Detail** → branded hero and show metadata.
-3. **Episode List** → card-based episode library.
-4. **Study Guide Page** → guide stack (first free, others premium-locked).
+## Sample Code (Reusable Components)
 
-## UI Principles
-- Dark theme + accent highlights.
-- Sticky translucent navbar with blur.
-- Rounded 2xl cards and soft glow shadows.
-- Motion-based hover interactions (lift, scale).
-- Mobile-first spacing and responsive grid hierarchy.
+### Navbar
+```jsx
+<Navbar />
+```
+Sticky top navigation, brand area, quick section links, CTA.
+
+### Sidebar (optional)
+```jsx
+<Sidebar podcastId={podcast.id} podcastTitle={podcast.title} episodeCount={podcast.episodes.length} />
+```
+Reusable context panel for podcast pages.
+
+### PodcastCard
+```jsx
+<PodcastCard podcast={podcast} />
+```
+Used in listing grids; receives one `podcast` object via props.
+
+### EpisodeCard
+```jsx
+<EpisodeCard episode={episode} podcastId={podcast.id} />
+```
+Displays episode metadata and links to study guides.
+
+### StudyGuideCard
+```jsx
+<StudyGuideCard guide={guide} isPreview={index === 0} onOpen={handleOpenGuide} />
+```
+Shows free/premium state and optional callback.
+
+### PremiumLockOverlay
+```jsx
+<PremiumLockOverlay label="Unlock this guide" cta="Go Premium" />
+```
+Composable lock state overlay; used by `StudyGuideCard`.
+
+### Footer
+```jsx
+<Footer />
+```
+Shared app-wide footer for product messaging.
+
+## Clean Coding Practices Applied
+- Components are single-purpose and prop-driven.
+- Shared UI patterns are extracted (`Button`, `SectionHeader`, `PremiumLockOverlay`).
+- Duplication is minimized by reusing cards and layout primitives across pages.
+- Data access uses helper selectors from `src/data/content.js`.
+- Tailwind utility classes only (no plain CSS files).
 
 ## Run
 ```bash

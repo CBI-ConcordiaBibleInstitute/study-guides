@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
-import GuideCard from '../components/cards/GuideCard';
+import StudyGuideCard from '../components/cards/StudyGuideCard';
 import SectionHeader from '../components/common/SectionHeader';
+import Sidebar from '../components/layout/Sidebar';
 import { getEpisodeById, getPodcastById } from '../data/content';
 
 export default function StudyGuidePage() {
@@ -27,10 +28,13 @@ export default function StudyGuidePage() {
         title="Start free, then unlock premium"
         subtitle="The first guide is free. Upgrade to access all deeper packs and workshop assets."
       />
-      <div className="space-y-4">
-        {episode.guides.map((guide, index) => (
-          <GuideCard key={guide.id} guide={guide} isFirstFree={index === 0} />
-        ))}
+      <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
+        <Sidebar podcastId={podcast.id} podcastTitle={podcast.title} episodeCount={podcast.episodes.length} />
+        <div className="space-y-4">
+          {episode.guides.map((guide, index) => (
+            <StudyGuideCard key={guide.id} guide={guide} isPreview={index === 0} />
+          ))}
+        </div>
       </div>
     </section>
   );

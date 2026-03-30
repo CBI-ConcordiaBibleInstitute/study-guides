@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import EpisodeCard from '../components/cards/EpisodeCard';
 import SectionHeader from '../components/common/SectionHeader';
+import Sidebar from '../components/layout/Sidebar';
 import { getPodcastById } from '../data/content';
 
 export default function EpisodeListPage() {
@@ -21,10 +22,13 @@ export default function EpisodeListPage() {
         title={`${podcast.title} Episodes`}
         subtitle="Choose an episode to open its study guide stack."
       />
-      <div className="grid gap-4 lg:grid-cols-2">
-        {podcast.episodes.map((episode) => (
-          <EpisodeCard key={episode.id} episode={episode} podcastId={podcast.id} />
-        ))}
+      <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
+        <Sidebar podcastId={podcast.id} podcastTitle={podcast.title} episodeCount={podcast.episodes.length} />
+        <div className="grid gap-4 lg:grid-cols-2">
+          {podcast.episodes.map((episode) => (
+            <EpisodeCard key={episode.id} episode={episode} podcastId={podcast.id} />
+          ))}
+        </div>
       </div>
     </section>
   );
