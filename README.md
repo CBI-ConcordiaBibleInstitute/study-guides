@@ -1,63 +1,57 @@
-# StudyCast UI Refresh (2025 SaaS Style)
+# StudyCast Navigation + Access Model
 
-## Before vs After Palette
+## Implemented Flow
+1. **PodcastList** on Home shows all podcasts as clickable cards.
+2. Clicking a podcast opens **EpisodeListPage** (`/podcast/:podcastId`) with all episodes in a clean vertical list.
+3. Clicking an episode opens **StudyGuidePage** (`/podcast/:podcastId/episode/:episodeId/study-guides`).
+4. **Access rule:** only the first study guide in each podcast is free; all others are locked.
 
-### Before (outdated/dim)
-- Background: very dark maroon-heavy tones
-- Accent: low-contrast red shades
-- Text hierarchy: weaker contrast and muted separation
+## Reusable Components
+- `PodcastList` → `src/components/lists/PodcastList.jsx`
+- `EpisodeList` → `src/components/lists/EpisodeList.jsx`
+- `StudyGuideList` → `src/components/lists/StudyGuideList.jsx`
+- `PremiumLockOverlay` → lock icon + blur + upgrade message
 
-### After (modern, accessible)
-- **Light mode base:** `#F6F8FC`
-- **Dark mode base:** `#0B1020`
-- **Surface/Card (light):** `#FFFFFF`
-- **Surface/Card (dark):** `#121A2F`
-- **Text Primary (light/dark):** `#0F172A` / `#E6EBFF`
-- **Text Secondary (light/dark):** `#475569` / `#A8B3D4`
-- **Primary Accent (indigo):** `#4F46E5`
-- **Primary Hover:** `#4338CA`
-- **Secondary Accent (teal):** `#14B8A6`
+## Locked Content UX
+Locked study guides now:
+- show 🔒 lock overlay
+- stay blurred/partially hidden
+- show “Premium Content / Unlock to Access”
+- trigger a premium popup when user clicks Unlock
 
-## CSS Variable Theme System
-Defined in `src/app/index.css` using `:root` (light) and `.dark` (dark):
-- `--bg`, `--bg-soft`
-- `--surface`, `--surface-elevated`
-- `--text-primary`, `--text-secondary`
-- `--primary`, `--primary-hover`, `--secondary`
-- `--accent-soft`, `--border`, `--shadow-card`
-
-## UI/UX Improvements Applied
-- Sticky minimal navbar with blur and theme toggle.
-- Modern button system (primary + secondary/ghost) with subtle ripple and elevation.
-- Card-based layout with larger whitespace, softer shadows, and rounded corners.
-- Improved typography hierarchy (Inter, stronger heading contrast, cleaner body text).
-- Hero section with subtle gradient texture and clearer CTA hierarchy.
-- Accessible link/hover states using primary accent.
-
-## Tailwind + CSS Variables Approach
-All styling is Tailwind utility classes using CSS variables:
-- `bg-[var(--bg)]`
-- `text-[var(--text-primary)]`
-- `border-[var(--border)]`
-- `shadow-[var(--shadow-card)]`
-
-This keeps theming centralized and easy to scale.
-
-## Scalable Project Structure
-```text
-src/
-├─ app/
-├─ components/
-├─ layouts/
-├─ pages/
-├─ hooks/
-├─ utils/
-├─ assets/
-└─ services/   # API logic
+## Data Shape (supported)
+```json
+{
+  "podcast": "Genesis",
+  "episodes": [
+    {
+      "title": "Episode 1",
+      "studyGuides": [
+        { "title": "Guide 1", "isFree": true },
+        { "title": "Guide 2", "isFree": false }
+      ]
+    }
+  ]
+}
 ```
 
-## Theme Toggle
-`Navbar` uses `useTheme` hook:
-- stores preference in `localStorage`
-- applies/removes `.dark` on `<html>`
-- respects system preference on first load
+## Styling System
+- Modern 2025 SaaS-inspired visuals
+- CSS variable light/dark theme tokens
+- Tailwind utilities for cards, spacing, typography, and transitions
+
+## Structure
+```text
+src/
+├─ components/
+│  ├─ cards/
+│  ├─ common/
+│  ├─ layout/
+│  ├─ lists/
+│  └─ overlays/
+├─ pages/
+├─ layouts/
+├─ hooks/
+├─ data/
+└─ app/
+```

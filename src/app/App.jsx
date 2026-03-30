@@ -4,7 +4,6 @@ import PageTransition from '../components/animations/PageTransition';
 import MainLayout from '../layouts/MainLayout';
 import EpisodeListPage from '../pages/EpisodeListPage';
 import Home from '../pages/Home';
-import PodcastPage from '../pages/PodcastPage';
 import StudyGuidePage from '../pages/StudyGuidePage';
 
 export default function App() {
@@ -21,8 +20,8 @@ export default function App() {
       <Routes location={location} key={location.pathname}>
         <Route element={<MainLayout />}>
           <Route index element={withTransition(Home)} />
-          <Route path="podcast/:podcastId" element={withTransition(PodcastPage)} />
-          <Route path="podcast/:podcastId/episodes" element={withTransition(EpisodeListPage)} />
+          <Route path="podcast/:podcastId" element={withTransition(EpisodeListPage)} />
+          <Route path="podcast/:podcastId/episodes" element={<Navigate to="../" replace />} />
           <Route path="podcast/:podcastId/episode/:episodeId/study-guides" element={withTransition(StudyGuidePage)} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>

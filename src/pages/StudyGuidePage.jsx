@@ -1,9 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import FadeInView from '../components/animations/FadeInView';
-import StudyGuideCard from '../components/cards/StudyGuideCard';
 import SectionHeader from '../components/common/SectionHeader';
 import SkeletonCard from '../components/feedback/SkeletonCard';
 import Sidebar from '../components/layout/Sidebar';
+import StudyGuideList from '../components/lists/StudyGuideList';
 import useMockLoading from '../hooks/useMockLoading';
 import { getEpisodeById, getPodcastById } from '../data/content';
 
@@ -20,7 +20,7 @@ export default function StudyGuidePage() {
   return (
     <FadeInView>
       <section className="space-y-8">
-        <Link to={`/podcast/${podcast.id}/episodes`} className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)]">
+        <Link to={`/podcast/${podcast.id}`} className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)]">
           ← Back to episodes
         </Link>
         <header className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-card)]">
@@ -30,16 +30,16 @@ export default function StudyGuidePage() {
         </header>
         <SectionHeader
           eyebrow="Study Guides"
-          title="Start free, then unlock premium"
-          subtitle="The first guide is free. Upgrade to access all deeper packs and workshop assets."
+          title="Free + Premium Access"
+          subtitle="Only the first guide in this podcast is free. Remaining guides are premium locked."
         />
         <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
           <Sidebar podcastId={podcast.id} podcastTitle={podcast.title} episodeCount={podcast.episodes.length} />
-          <div className="space-y-4">
-            {isLoading
-              ? Array.from({ length: 4 }).map((_, index) => <SkeletonCard key={index} className="h-24" />)
-              : episode.guides.map((guide, index) => <StudyGuideCard key={guide.id} guide={guide} isPreview={index === 0} />)}
-          </div>
+          {isLoading ? (
+            <div className="space-y-4">{Array.from({ length: 4 }).map((_, index) => <SkeletonCard key={index} className="h-24" />)}</div>
+          ) : (
+            <StudyGuideList podcast={podcast} episode={episode} />
+          )}
         </div>
       </section>
     </FadeInView>

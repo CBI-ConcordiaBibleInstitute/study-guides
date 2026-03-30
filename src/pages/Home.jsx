@@ -1,8 +1,8 @@
 import FadeInView from '../components/animations/FadeInView';
-import PodcastCard from '../components/cards/PodcastCard';
 import Button from '../components/common/Button';
 import SectionHeader from '../components/common/SectionHeader';
 import SkeletonCard from '../components/feedback/SkeletonCard';
+import PodcastList from '../components/lists/PodcastList';
 import useMockLoading from '../hooks/useMockLoading';
 import { getPodcastsByTag } from '../data/content';
 
@@ -23,14 +23,14 @@ export default function Home() {
           <div className="relative space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--secondary)]">Faith + Learning Platform</p>
             <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-[var(--text-primary)] sm:text-5xl">
-              Grow in Scripture with podcast-style study guides built for modern discipleship.
+              Explore podcasts, open episodes, and grow with structured study guides.
             </h1>
             <p className="max-w-2xl text-[var(--text-secondary)]">
-              Discover episodes, open guides, and build a consistent learning rhythm with a clean, modern study experience.
+              Click any podcast to view all episodes, then open an episode to access study guides with built-in free + premium gating.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button>Get Started</Button>
-              <Button variant="ghost">Explore Guides</Button>
+              <Button variant="ghost">Explore Podcasts</Button>
             </div>
           </div>
         </header>
@@ -40,13 +40,15 @@ export default function Home() {
         <FadeInView key={section.id} delay={sectionIndex * 0.05}>
           <section id={section.id} className="space-y-4 scroll-mt-24">
             <SectionHeader eyebrow={section.eyebrow} title={section.title} subtitle={section.subtitle} />
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {isLoading
-                ? Array.from({ length: 3 }).map((_, index) => <SkeletonCard key={index} className="h-72" />)
-                : getPodcastsByTag(section.tag).map((podcast) => (
-                    <PodcastCard key={`${section.id}-${podcast.id}`} podcast={podcast} />
-                  ))}
-            </div>
+            {isLoading ? (
+              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <SkeletonCard key={index} className="h-72" />
+                ))}
+              </div>
+            ) : (
+              <PodcastList podcasts={getPodcastsByTag(section.tag)} />
+            )}
           </section>
         </FadeInView>
       ))}
