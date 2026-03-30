@@ -1,94 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover modern Bible study guides with searchable topics, episodes, and podcast resources." />
-  <title>Bible Study Guide Library</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body class="is-loading">
-  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading website">
-    <div class="loader-mark" aria-hidden="true">
-      <span class="loader-ring loader-ring--outer"></span>
-      <span class="loader-ring loader-ring--inner"></span>
-      <span class="loader-core"></span>
-    </div>
-    <p class="loader-text">Loading Concordia Study Library...</p>
-  </div>
-
-  <div id="siteContent" aria-hidden="true">
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
-    <header class="site-header" id="top">
-      <div class="container nav-wrap">
-        <a class="logo header-brand" href="index.html" aria-label="Bible Study Guide Library home">
-          <img src="images/concordia-logo.svg" alt="Concordia Bible Institute logo" class="header-logo" />
-          <span class="brand-text">CBI-StudyGuideLibrary</span>
-        </a>
-        <nav aria-label="Primary">
-          <ul class="nav-links">
-            <li><a href="#study-guides">Study Guides</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero" id="hero">
-        <div class="hero-bg-shape" aria-hidden="true"></div>
-        <div class="container hero-content fade-up">
-          <p class="eyebrow">Concordia Bible Institute</p>
-          <h1>Concordia Bible Institute STUDY GUIDES</h1>
-          <p class="subtitle">The Concordia Bible Institute (CBI) exists to provide Christ-centered Bible instruction from distinguished experts who teach “Christ in Every Word” of the Old and New Testaments, to strengthen faith and spread belief in the one true God.</p>
-          <a class="cta-button" href="#study-guides">Browse Guides</a>
-        </div>
-        <a class="scroll-indicator" href="#study-guides" aria-label="Scroll to study guides">
-          <span></span>
-        </a>
-      </section>
-
-      <section class="library section" id="study-guides">
-        <div class="container">
-          <div class="section-heading fade-up">
-            <p class="eyebrow">Library</p>
-            <h2>Study Guides</h2>
-          </div>
-
-          <div class="controls fade-up">
-            <label class="search-wrap" for="guideSearch">
-              <span class="sr-only">Search guides</span>
-              <input id="guideSearch" type="search" placeholder="Search by guide title or episode topic..." autocomplete="off" />
-            </label>
-
-            <div class="category-filters" role="group" aria-label="Guide category filters">
-              <button class="filter-btn active" data-category="all">All</button>
-              <button class="filter-btn" data-category="old-testament">Old Testament</button>
-              <button class="filter-btn" data-category="new-testament">New Testament</button>
-            
-            </div>
-          </div>
-
-          <div class="library-summary fade-up">
-            <div>
-              <p class="summary-label">Featured now</p>
-              <h3 id="guideSummaryHeading">Showing featured study guides</h3>
-              <p id="guideSummaryText">Click any card to open its full study guide page directly.</p>
-            </div>
-            <button class="more-button" id="moreGuidesButton" type="button" aria-expanded="false">More Study Guides</button>
-          </div>
-
-          <div class="guide-grid" id="guideGrid" aria-live="polite"></div>
-
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Concordia Bible Institute study guides" />
+    <title>CBI Study Guides</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

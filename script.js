@@ -45,11 +45,13 @@ const guideDefinitions = [
 const studyGuides = guideDefinitions.map((guide) => ({
   ...guide,
   searchIndex: [guide.title, guide.description, ...guide.categories].join(' ').toLowerCase(),
-  episodeCount: guide.slug === 'genesis' ? 4 : 3
+  episodeCount: guide.slug === 'genesis' ? 4 : 3,
+  level: guide.categories.includes('new-testament') ? 'Intermediate' : 'Foundational',
+  duration: guide.slug === 'genesis' || guide.slug === 'romans' ? '6-Week Path' : '4-Week Path'
 }));
 
 let activeCategory = 'all';
-let isExpanded = false;
+let isExpanded = document.body.classList.contains('guides-index');
 
 window.addEventListener('DOMContentLoaded', () => {
   if (pageLoader && siteContent) {
@@ -79,7 +81,7 @@ const animateObserver = new IntersectionObserver(
 const normalize = (value) => value.toLowerCase().trim();
 
 function observeFadeUps() {
-  document.querySelectorAll('.fade-up').forEach((el) => {
+  document.querySelectorAll('.fade-up, .reveal').forEach((el) => {
     if (!el.classList.contains('in-view')) {
       animateObserver.observe(el);
     }
@@ -103,6 +105,10 @@ function createGuideMarkup(guide) {
             <span class="episode-count">${guide.episodeCount} Sections</span>
           </div>
           <p>${guide.description}</p>
+          <div class="card-meta">
+            <span>${guide.level}</span>
+            <span>${guide.duration}</span>
+          </div>
           <ul class="card-tags">${createCategoryBadges(guide.categories)}</ul>
           <span class="guide-card__link">Open full guide page</span>
         </div>
