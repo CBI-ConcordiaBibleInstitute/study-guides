@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #faf6f7;
+  --bg-soft: #f3ecee;
+  --surface: #ffffff;
+  --surface-elevated: #fdf8f9;
+  --text-primary: #2a1d22;
+  --text-secondary: #6d535d;
+  --primary: #892334;
+  --primary-hover: #a33147;
+  --secondary: #b55a70;
+  --brand: #c9a35f;
+  --accent-soft: rgba(137, 35, 52, 0.14);
+  --border: rgba(42, 29, 34, 0.12);
+  --shadow-card: 0 14px 34px rgba(91, 43, 56, 0.12);
+}
+
+.dark {
+  --bg: #171116;
+  --bg-soft: #231921;
+  --surface: #231921;
+  --surface-elevated: #2f222c;
+  --text-primary: #f6e9ed;
+  --text-secondary: #c9adb7;
+  --primary: #c55b73;
+  --primary-hover: #da7890;
+  --secondary: #d78ea0;
+  --brand: #e0be81;
+  --accent-soft: rgba(197, 91, 115, 0.22);
+  --border: rgba(246, 233, 237, 0.16);
+  --shadow-card: 0 18px 46px rgba(6, 3, 4, 0.5);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .saas-card {
+    @apply rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)] transition duration-300;
+  }
+
+  .saas-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .saas-panel {
+    @apply rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)] backdrop-blur;
+  }
+
+  .saas-link {
+    @apply text-[var(--primary)] transition hover:text-[var(--primary-hover)];
+  }
+}
