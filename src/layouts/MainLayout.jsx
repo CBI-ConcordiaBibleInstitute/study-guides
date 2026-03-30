@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Footer from '../components/layout/Footer';
+import Navbar from '../components/layout/Navbar';
 
-export default function Layout() {
+export default function MainLayout() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 antialiased">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(59,130,246,0.2),transparent_30%),radial-gradient(circle_at_90%_0%,rgba(16,185,129,0.16),transparent_25%)]" />

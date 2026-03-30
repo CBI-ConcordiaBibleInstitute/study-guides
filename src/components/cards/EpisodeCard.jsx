@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function EpisodeCard({ episode, podcastId }) {
   return (
     <motion.article
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -4, scale: 1.01 }}
       transition={{ type: 'spring', stiffness: 280, damping: 20 }}
       className="rounded-2xl border border-white/10 bg-slate-900/70 p-5 shadow-xl shadow-black/30"
     >
