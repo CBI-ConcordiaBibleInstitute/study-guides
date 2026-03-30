@@ -1,103 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover modern Bible study guides with searchable topics, episodes, and podcast resources." />
-  <title>Bible Study Guide Library</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body class="is-loading">
-  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading website">
-    <div class="loader-mark" aria-hidden="true">
-      <span class="loader-ring loader-ring--outer"></span>
-      <span class="loader-ring loader-ring--inner"></span>
-      <span class="loader-core"></span>
-    </div>
-    <p class="loader-text">Loading Concordia Study Library...</p>
-  </div>
-
-  <div id="siteContent" aria-hidden="true">
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
-    <header class="site-header" id="top">
-      <div class="container nav-wrap">
-        <a class="logo header-brand" href="index.html" aria-label="Bible Study Guide Library home">
-          <img src="images/concordia-logo.svg" alt="Concordia Bible Institute logo" class="header-logo" />
-          <span class="brand-text">CBI StudyGuide Library</span>
-        </a>
-        <nav aria-label="Primary">
-          <ul class="nav-links">
-            <li><a href="guides.html">Study Guides</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero" id="hero">
-        <div class="hero-bg-shape" aria-hidden="true"></div>
-        <div class="hero-orb hero-orb--one" aria-hidden="true"></div>
-        <div class="hero-orb hero-orb--two" aria-hidden="true"></div>
-        <div class="container hero-content reveal reveal-up">
-          <p class="eyebrow">Concordia Bible Institute</p>
-          <h1>Concordia Bible Institute Study Guides</h1>
-          <p class="subtitle">A modern, organized library of Christ-centered courses and episode guides. Search by testament, discover curated pathways, and open any guide instantly.</p>
-        </div>
-        <a class="scroll-indicator" href="#explore-guides" aria-label="Scroll to explore guides">
-          <span></span>
-        </a>
-      </section>
-
-      <section class="metrics section">
-        <div class="container">
-          <div class="metrics-grid">
-            <article class="metric-card reveal reveal-left">
-              <p>40+</p>
-              <h3>Bible Podcasts</h3>
-            </article>
-            <article class="metric-card reveal reveal-right">
-              <p>300+</p>
-              <h3>Episodes</h3>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="ecosystem section">
-        <div class="container ecosystem-wrap">
-          <div class="section-heading reveal reveal-up">
-            <p class="eyebrow">Featured Episodes</p>
-            <h2>Explore key study pathways</h2>
-            <p>Discover important episodes in a focused ecosystem layout, then jump straight into the complete study guide library.</p>
-          </div>
-          <div class="ecosystem-orbit reveal reveal-zoom" aria-label="Important study guide episodes">
-            <a class="orbit-item orbit-item--one" href="guides/genesis.html">Genesis</a>
-            <a class="orbit-item orbit-item--two" href="guides/romans.html">Romans</a>
-            <a class="orbit-item orbit-item--three" href="guides/psalms.html">Psalms</a>
-            <a class="orbit-item orbit-item--four" href="guides/john.html">John</a>
-            <a class="orbit-item orbit-item--five" href="guides/revelation.html">Revelation</a>
-            <span class="orbit-core">CBI</span>
-          </div>
-          <div class="ecosystem-action reveal reveal-up">
-            <a class="cta-button" href="guides.html">Study Guides</a>
-          </div>
-        </div>
-      </section>
-      <section class="landing-cta section" id="explore-guides">
-        <div class="container landing-cta__panel reveal reveal-up">
-          <p class="eyebrow">Next Step</p>
-          <h2>Explore all study guides on the next page</h2>
-          <p>We placed the complete guide library on a dedicated page for a cleaner, focused first experience.</p>
-          <a class="cta-button" href="guides.html">Explore Study Guides</a>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Concordia Bible Institute study guides" />
+    <title>CBI Study Guides</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
